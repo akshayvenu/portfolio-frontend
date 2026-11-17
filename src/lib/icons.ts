@@ -1,5 +1,7 @@
 import {
   Activity,
+  ArrowDown,
+  ArrowUp,
   ArrowUpRight,
   BadgeCheck,
   Box,
@@ -13,6 +15,7 @@ import {
   Copy,
   Dumbbell,
   Flame,
+  Footprints,
   GraduationCap,
   Infinity as InfinityIcon,
   Lightbulb,
@@ -38,6 +41,8 @@ import {
  */
 export const iconRegistry = {
   activity: Activity,
+  "arrow-down": ArrowDown,
+  "arrow-up": ArrowUp,
   "arrow-up-right": ArrowUpRight,
   "badge-check": BadgeCheck,
   box: Box,
@@ -51,6 +56,7 @@ export const iconRegistry = {
   copy: Copy,
   dumbbell: Dumbbell,
   flame: Flame,
+  footprints: Footprints,
   "graduation-cap": GraduationCap,
   infinity: InfinityIcon,
   lightbulb: Lightbulb,

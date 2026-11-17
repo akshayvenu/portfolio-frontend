@@ -33,6 +33,36 @@ export interface MuscleSplitSlice {
   share: number;
 }
 
+export interface MuscleRadarAxis {
+  muscle: string;
+  currentSets: number;
+  previousSets: number;
+  /** Share of the window's working sets, 0–1. Radii are drawn from these. */
+  currentShare: number;
+  previousShare: number;
+}
+
+export interface MuscleRadar {
+  windowDays: number;
+  /** Always six spokes, in drawing order (clockwise from upper-left). */
+  axes: MuscleRadarAxis[];
+}
+
+export interface PeriodMetric {
+  id: string;
+  label: string;
+  value: string;
+  unit?: string;
+  /** Pre-formatted, unsigned change vs the previous window; absent when flat. */
+  delta?: string;
+  direction: "up" | "down" | "flat";
+}
+
+export interface PeriodComparison {
+  windowDays: number;
+  metrics: PeriodMetric[];
+}
+
 export interface PersonalRecord {
   exercise: string;
   exerciseTemplateId: string;
@@ -75,6 +105,8 @@ export interface TrainingSnapshot {
   stats: TrainingStat[];
   heatmap: HeatmapDay[];
   muscleSplit: MuscleSplitSlice[];
+  muscleRadar: MuscleRadar;
+  periodComparison: PeriodComparison;
   records: PersonalRecord[];
   workouts: WorkoutSummary[];
   routines: RoutineSummary[];

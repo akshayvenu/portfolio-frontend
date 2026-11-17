@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
 import { ContentColumn, HashedBand, SiteFooter, SiteHeader } from "@/components/layout";
 import {
-  Consistency,
-  CurrentProgram,
-  MuscleSplit,
+  Goals,
   PersonalRecords,
-  RecentSessions,
+  RunningRecords,
   TrainingHeader,
-  TrainingStats,
 } from "@/components/sections/fitness";
 import { getTrainingSnapshot } from "@/lib/hevy/snapshot";
 
@@ -31,27 +28,24 @@ export default async function SideQuestPage() {
       <main>
         <ContentColumn>
           <TrainingHeader snapshot={snapshot} />
-          <TrainingStats stats={snapshot.stats} />
         </ContentColumn>
 
         <HashedBand />
 
         <ContentColumn>
-          <Consistency days={snapshot.heatmap} />
-
-          {/* Two half-width panels that stack below `sm`; the shared middle rule
-              comes from the left panel's own border, so the seam stays hairline. */}
+          {/* The two bests panels sit side by side because they answer the same
+              question in two units; they stack below `sm`, and the shared middle
+              rule comes from the left panel's own border so the seam stays hairline. */}
           <div className="flex flex-col sm:flex-row">
-            <MuscleSplit split={snapshot.muscleSplit} />
             <PersonalRecords records={snapshot.records} />
+            <RunningRecords />
           </div>
         </ContentColumn>
 
         <HashedBand />
 
         <ContentColumn>
-          <RecentSessions workouts={snapshot.workouts} />
-          <CurrentProgram routines={snapshot.routines} />
+          <Goals />
         </ContentColumn>
       </main>
 

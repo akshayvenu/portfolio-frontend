@@ -41,10 +41,9 @@ export const navItems: readonly NavItem[] = [
 ];
 
 export const fitnessNavItems: readonly NavItem[] = [
-  { label: "Numbers", href: "#numbers" },
-  { label: "Consistency", href: "#consistency" },
-  { label: "Records", href: "#records" },
-  { label: "Sessions", href: "#sessions" },
+  { label: "Lifts", href: "#records" },
+  { label: "Runs", href: "#runs" },
+  { label: "Goals", href: "#goals" },
 ];
 
 /** Order matters — this is the left-to-right order of the header switch. */
