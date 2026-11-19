@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import { SocialDock } from "@/components/layout";
 import { siteConfig } from "@/content";
 import { fontVariables } from "./fonts";
 import "./globals.css";
@@ -35,15 +36,20 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#09090b",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    // The site is dark-only, so `dark` is set here rather than by a runtime
-    // theme library — it lands in the SSR markup with no flash on first paint.
-    <html lang="en" className={`dark ${fontVariables}`}>
-      <body>{children}</body>
+    // The site renders the light (white) theme by default: the `:root` tokens in
+    // styles/tokens/colors.css. Adding `dark` to this className opts into the
+    // `.dark` overrides, still with no flash since it lands in the SSR markup.
+    <html lang="en" className={fontVariables}>
+      {/* Bottom padding keeps the fixed social dock from covering the footer. */}
+      <body className="pb-24">
+        {children}
+        <SocialDock />
+      </body>
     </html>
   );
 }

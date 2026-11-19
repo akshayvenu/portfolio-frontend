@@ -8,7 +8,7 @@ import { Caveat, Geist, Geist_Mono, IBM_Plex_Serif } from "next/font/google";
 
 export const geistSans = Geist({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "800"],
   variable: "--font-geist-sans",
   display: "swap",
 });

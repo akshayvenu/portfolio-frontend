@@ -1,6 +1,5 @@
 export { ProfileHeader } from "./profile-header";
 export { Overview } from "./overview";
-export { SocialLinks } from "./social-links";
 export { Contributions } from "./contributions";
 export { Greeting } from "./greeting";
 export { Stack } from "./stack";

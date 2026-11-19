@@ -3,6 +3,8 @@ export { siteConfig, navItems, fitnessNavItems, pageTabs } from "./site";
 export { profile } from "./profile";
 export { fitness } from "./fitness";
 export { socialLinks } from "./social";
+export { socialCards } from "./social-cards";
+export type { SocialCard, SocialCardPlatform } from "./social-cards";
 export { techStack } from "./stack";
 export { experience } from "./experience";
 export { education } from "./education";

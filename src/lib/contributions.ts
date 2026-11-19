@@ -12,8 +12,11 @@ export interface ContributionCalendar {
   /** `DD.MM.YYYY`, matching the figure caption. */
   from: string;
   to: string;
-  /** Month headings across the mosaic, oldest first. */
-  months: string[];
+  /**
+   * One entry per week column: the month name where a month starts, otherwise
+   * `null` — so headings sit above the column they belong to, as on GitHub.
+   */
+  monthLabels: (string | null)[];
 }
 
 interface ApiResponse {
@@ -69,24 +72,42 @@ export function buildCalendar(days: ContributionDay[]): ContributionCalendar {
     total: days.reduce((sum, day) => sum + day.count, 0),
     from: formatDate(first.date),
     to: formatDate(last.date),
-    months: monthHeadings(weeks),
+    monthLabels: monthLabels(weeks),
   };
 }
 
-/** One heading per month the mosaic spans, oldest first. */
-function monthHeadings(weeks: ContributionWeeks): string[] {
-  const seen = new Set<string>();
-  const labels: string[] = [];
+/** Columns a heading needs so it never collides with the next one. */
+const MIN_LABEL_SPAN = 3;
 
-  for (const week of weeks) {
+/** Month heading for each week column that starts a new month, else `null`. */
+function monthLabels(weeks: ContributionWeeks): (string | null)[] {
+  const labels: (string | null)[] = [];
+  let previousMonth = -1;
+  let lastLabelIndex = -1;
+
+  weeks.forEach((week, index) => {
     const day = week[0];
-    if (!day) continue;
+    if (!day) {
+      labels.push(null);
+      return;
+    }
+
     const date = new Date(`${day.date}T00:00:00Z`);
-    const key = `${date.getUTCFullYear()}-${date.getUTCMonth()}`;
-    if (seen.has(key)) continue;
-    seen.add(key);
+    const month = date.getUTCMonth();
+    if (month === previousMonth) {
+      labels.push(null);
+      return;
+    }
+
+    // A partial leading month too narrow for its heading would overlap this
+    // one, so drop it (GitHub does the same).
+    if (lastLabelIndex !== -1 && index - lastLabelIndex < MIN_LABEL_SPAN) {
+      labels[lastLabelIndex] = null;
+    }
     labels.push(date.toLocaleString("en-US", { month: "short", timeZone: "UTC" }));
-  }
+    lastLabelIndex = index;
+    previousMonth = month;
+  });
 
   return labels;
 }

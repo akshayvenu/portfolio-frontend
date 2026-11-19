@@ -23,12 +23,41 @@
   /* Translucent pill behind stack entries. */
   --stack-badge-background: color-mix(in oklab, var(--surface) 80%, transparent);
 
-  /* Contribution mosaic intensity ramp, level 0 (none) through 4 (most). */
-  --contribution-0: color-mix(in oklab, var(--foreground) 5%, var(--background));
-  --contribution-1: color-mix(in oklab, var(--foreground) 16%, var(--background));
-  --contribution-2: color-mix(in oklab, var(--foreground) 32%, var(--background));
-  --contribution-3: color-mix(in oklab, var(--foreground) 52%, var(--background));
-  --contribution-4: color-mix(in oklab, var(--foreground) 76%, var(--background));
+  /* Contribution graph, level 0 (none) through 4 (most). Each pixel-art tile
+     is a darker 1px rim around a lighter fill, plus a white top highlight. */
+  --contribution-0-rim: #cfd4da;
+  --contribution-0: #eef0f2;
+  --contribution-1-rim: #7fd595;
+  --contribution-1: #b7ecc3;
+  --contribution-2-rim: #34a853;
+  --contribution-2: #5fcf7d;
+  --contribution-3-rim: #1f7d3a;
+  --contribution-3: #34a853;
+  --contribution-4-rim: #0f5524;
+  --contribution-4: #1f7d3a;
+  --contribution-highlight: rgb(255 255 255 / 0.5);
+  /* Axis labels and legend (mono caps). */
+  --contribution-label: #878787;
+
+  /* Social preview cards (SocialDock). Brand surfaces, so they stay fixed
+     across themes. */
+  --card-github-from: #f7f7f8;
+  --card-github-to: #e4e4e7;
+  --card-github-mark: #ececee;
+  --card-github-ink: #18181b;
+  --card-x-from: #1f1f23;
+  --card-x-to: #0b0b0c;
+  --card-x-ink: #fafafa;
+  --card-linkedin-from: #4a9be8;
+  --card-linkedin-to: #1d74d0;
+  --card-linkedin-panel: #2f80d6;
+  --card-linkedin-mark: #1a64b4;
+  --card-linkedin-ink: #ffffff;
+  --card-email-from: #f0f0ee;
+  --card-email-to: #e2e1dd;
+  --card-email-ink: #27272a;
+  --card-email-accent: #2b35b8;
+  --card-email-ascii: #3a45c9;
 
   /* Training heatmap ramp — same geometry as the contribution mosaic, tinted
      with the Side Quest accent so the two maps can't be confused. */
@@ -38,4 +67,19 @@
   --training-2: color-mix(in oklab, var(--training) 45%, var(--background));
   --training-3: color-mix(in oklab, var(--training) 68%, var(--background));
   --training-4: var(--training);
+}
+
+.dark {
+  --contribution-0-rim: #2a2f36;
+  --contribution-0: #161b22;
+  --contribution-1-rim: #0b3420;
+  --contribution-1: #0e4429;
+  --contribution-2-rim: #005224;
+  --contribution-2: #006d32;
+  --contribution-3-rim: #1c7d31;
+  --contribution-3: #26a641;
+  --contribution-4-rim: #2aa840;
+  --contribution-4: #39d353;
+  --contribution-highlight: rgb(255 255 255 / 0.12);
+  --contribution-label: #8b8b8b;
 }

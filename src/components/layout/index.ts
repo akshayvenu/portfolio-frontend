@@ -4,3 +4,5 @@ export { ContentColumn } from "./content-column";
 export { HashedBand } from "./hashed-band";
 export { CommandMenu } from "./command-menu";
 export { PageSwitch, SectionNav } from "./page-switch";
+export { SocialDock } from "./social-dock";
+export { SocialPreviewCard } from "./social-preview-card";

@@ -1,14 +1,13 @@
 import { ContentColumn, HashedBand, SiteFooter, SiteHeader } from "@/components/layout";
 import {
   // Certifications,
-  // Contributions,
+  Contributions,
   Education,
   Experience,
   Greeting,
   Overview,
   ProfileHeader,
   // Projects,
-  SocialLinks,
   Stack,
 } from "@/components/sections";
 import { siteConfig } from "@/content";
@@ -52,8 +51,7 @@ export default function HomePage() {
 
         <ContentColumn>
           <Overview />
-          <SocialLinks />
-          {/* <Contributions /> */}
+          <Contributions />
         </ContentColumn>
 
         <HashedBand />

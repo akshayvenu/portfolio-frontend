@@ -1,10 +1,9 @@
 import { siteConfig } from "./site";
 
-/** GitHub account the contribution mosaic is fetched for. */
+/** GitHub account the contribution graph is fetched for. */
 export const contributionUser = "akshayvenu";
 
-/** Static bits of the figure caption; the date range comes from the API. */
+/** Profile link shown under the graph. */
 export const contributionSource = {
-  sourceLabel: "GitHub",
-  sourceHref: siteConfig.githubUrl,
+  href: siteConfig.githubUrl,
 } as const;
