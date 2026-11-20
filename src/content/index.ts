@@ -11,4 +11,4 @@ export { experience } from "./experience";
 export { education } from "./education";
 export { projects } from "./projects";
 export { certifications } from "./certifications";
-export { contributionUser, contributionSource } from "./contributions";
+export { contributionAccounts } from "./contributions";

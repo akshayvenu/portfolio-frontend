@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import type { ContributionCalendar } from "@/lib/contributions";
 import { EASE_SETTLE, gsap, prefersReducedMotion, useGSAP } from "@/lib/gsap";
+import { cn } from "@/lib/utils";
 import type { ContributionDay, ContributionLevel } from "@/types/content";
 
 const LEVELS: ContributionLevel[] = [0, 1, 2, 3, 4];
@@ -57,22 +58,33 @@ function contributionLabel(day: ContributionDay): string {
   return `${count} on ${date}`;
 }
 
-interface Props {
-  calendar: ContributionCalendar;
+interface Account {
+  id: string;
+  label: string;
   /** Account name without the "@", e.g. "akshayvenu". */
   username: string;
-  profileHref: string;
+  href: string;
+  calendar: ContributionCalendar;
+}
+
+interface Props {
+  /** The first account is shown by default. */
+  accounts: readonly Account[];
 }
 
 /**
  * GitHub contribution graph, drawn as an SVG of pixel-art tiles.
  *
  * The first time it scrolls into view, the heading blurs up into place and the
- * week columns then sweep in from left to right.
+ * week columns then sweep in from left to right. Switching account replays the
+ * column sweep for the newly selected graph.
  */
-export function ContributionsMosaic({ calendar, username, profileHref }: Props) {
+export function ContributionsMosaic({ accounts }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
-  const { weeks, total, monthLabels } = calendar;
+  const [activeId, setActiveId] = useState(accounts[0]!.id);
+  const account = accounts.find((entry) => entry.id === activeId) ?? accounts[0]!;
+  const { weeks, total, monthLabels } = account.calendar;
+  const { username, href: profileHref } = account;
   const width = weeks.length * PITCH - (PITCH - TILE);
 
   useGSAP(
@@ -120,23 +132,84 @@ export function ContributionsMosaic({ calendar, username, profileHref }: Props) 
     { scope: rootRef },
   );
 
+  // Replay the column sweep when the account changes (not on first mount, which
+  // the scroll-triggered reveal above already handles).
+  const mountedRef = useRef(false);
+  useGSAP(
+    () => {
+      if (!mountedRef.current) {
+        mountedRef.current = true;
+        return;
+      }
+      const root = rootRef.current;
+      if (!root || prefersReducedMotion()) return;
+      const columns = gsap.utils.toArray<SVGGElement>("[data-column]", root);
+
+      gsap.fromTo(
+        columns,
+        { opacity: 0, x: -14, scaleY: 0.55, transformOrigin: "50% 50%" },
+        {
+          opacity: 1,
+          x: 0,
+          scaleY: 1,
+          duration: 0.46,
+          ease: EASE_SETTLE,
+          stagger: COLUMN_STEP,
+          overwrite: "auto",
+        },
+      );
+    },
+    { scope: rootRef, dependencies: [activeId] },
+  );
+
   return (
     <div ref={rootRef} className="flex flex-col gap-5 p-4">
       <noscript>
         <style>{NO_SCRIPT_CSS}</style>
       </noscript>
 
-      <div className="flex flex-col gap-0.5">
-        <h2
-          data-stage
-          className="m-0 font-sans text-[16px] leading-[1.2] font-medium tracking-[-0.04em] text-foreground opacity-0"
-        >
-          GitHub
-        </h2>
-        <p data-stage className="m-0 text-[15px] leading-5 text-muted-foreground opacity-0">
-          <span className="tabular-nums">{total.toLocaleString("en-US")}</span> contributions in the
-          last year.
-        </p>
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-col gap-0.5">
+          <h2
+            data-stage
+            className="m-0 font-sans text-[16px] leading-[1.2] font-medium tracking-[-0.04em] text-foreground opacity-0"
+          >
+            GitHub
+          </h2>
+          <p data-stage className="m-0 text-[15px] leading-5 text-muted-foreground opacity-0">
+            <span className="tabular-nums">{total.toLocaleString("en-US")}</span> contributions in
+            the last year.
+          </p>
+        </div>
+
+        {accounts.length > 1 ? (
+          <div
+            data-stage
+            role="group"
+            aria-label="GitHub account"
+            className="flex shrink-0 items-center gap-0.5 rounded-full border border-line bg-surface p-0.5 opacity-0"
+          >
+            {accounts.map((entry) => {
+              const active = entry.id === account.id;
+              return (
+                <button
+                  key={entry.id}
+                  type="button"
+                  aria-pressed={active}
+                  onClick={() => setActiveId(entry.id)}
+                  className={cn(
+                    "cursor-pointer rounded-full px-3 py-1 text-[0.8125rem] font-medium whitespace-nowrap transition-colors duration-[var(--duration-fast)]",
+                    active
+                      ? "bg-foreground text-background"
+                      : "text-muted-foreground hover:text-foreground",
+                  )}
+                >
+                  {entry.label}
+                </button>
+              );
+            })}
+          </div>
+        ) : null}
       </div>
 
       <div data-stage className="flex flex-col gap-3 opacity-0">

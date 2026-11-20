@@ -1,9 +1,20 @@
 import { siteConfig } from "./site";
 
-/** GitHub account the contribution graph is fetched for. */
-export const contributionUser = "akshayvenu";
-
-/** Profile link shown under the graph. */
-export const contributionSource = {
-  href: siteConfig.githubUrl,
-} as const;
+/**
+ * GitHub accounts the contribution graph can show, in switch order. The first
+ * one is shown by default.
+ */
+export const contributionAccounts = [
+  {
+    id: "work",
+    label: "Work",
+    username: "akshay-tnm",
+    href: "https://github.com/akshay-tnm",
+  },
+  {
+    id: "personal",
+    label: "Personal",
+    username: "akshayvenu",
+    href: siteConfig.githubUrl,
+  },
+] as const;
