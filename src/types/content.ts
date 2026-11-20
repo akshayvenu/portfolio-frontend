@@ -8,6 +8,17 @@ import type { IconName } from "@/lib/icons";
  * touching a single component.
  */
 
+/** A link that reveals a website-preview card on hover. */
+export interface LinkPreview {
+  /** Visible link text, also the accessible name. */
+  label: string;
+  href: string;
+  /** Screenshot served from `public/`. */
+  image: string;
+  title: string;
+  subtitle: string;
+}
+
 export interface OverviewItem {
   icon: IconName;
   /** Static label. Omit when `dynamic` supplies the value at runtime. */
@@ -19,12 +30,19 @@ export interface OverviewItem {
   copy?: string;
   /** Values that cannot be known at build time. */
   dynamic?: "local-time";
+  /** Appended after `label` as a hoverable link with a website preview. */
+  preview?: LinkPreview;
 }
 
 export interface Profile {
   displayName: string;
   /** Avatar image served from `public/`. Omit to fall back to initials. */
   avatarUrl?: string;
+  /**
+   * Looping avatar video served from `public/`. When set it replaces the
+   * image in the masthead; `avatarUrl` is then used as its poster frame.
+   */
+  avatarVideoUrl?: string;
   /** Rotating one-liners under the name. */
   flipSentences: string[];
   /** Bio paragraphs. `**bold**` spans render as underlined links. */
@@ -73,6 +91,8 @@ export interface Company {
   company: string;
   location: string;
   current: boolean;
+  /** Makes the company name a link with a website-preview card. */
+  preview?: LinkPreview;
   roles: Role[];
 }
 

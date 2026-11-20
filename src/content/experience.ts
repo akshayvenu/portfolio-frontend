@@ -1,10 +1,12 @@
 import type { Company } from "@/types/content";
+import { aivision21 } from "./companies";
 
 export const experience: readonly Company[] = [
   {
     company: "AIVision21",
     location: "South Mumbai, Maharashtra, India (On-site)",
     current: true,
+    preview: aivision21,
     roles: [
       {
         title: "AI & Backend Developer",

@@ -6,6 +6,7 @@ export { socialLinks } from "./social";
 export { socialCards } from "./social-cards";
 export type { SocialCard, SocialCardPlatform } from "./social-cards";
 export { techStack } from "./stack";
+export { aivision21 } from "./companies";
 export { experience } from "./experience";
 export { education } from "./education";
 export { projects } from "./projects";

@@ -28,7 +28,19 @@ export function ProfileHeader() {
       <div className="col-start-1 row-span-2 row-start-1 flex flex-col">
         <div className="mt-auto shrink-0 border-t border-r border-line px-[2px] py-[3px]">
           <div className="relative flex size-[152px] items-center justify-center overflow-hidden rounded-full border border-border bg-muted text-[34px] font-medium tracking-[-0.02em] text-muted-foreground select-none max-sm:size-24 max-sm:text-2xl">
-            {profile.avatarUrl ? (
+            {profile.avatarVideoUrl ? (
+              <video
+                src={profile.avatarVideoUrl}
+                poster={profile.avatarUrl}
+                aria-hidden="true"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className="absolute inset-0 size-full object-cover"
+              />
+            ) : profile.avatarUrl ? (
               <Image
                 src={profile.avatarUrl}
                 alt=""

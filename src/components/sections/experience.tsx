@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Icon } from "@/components/icons";
-import { IconTile, Panel, PanelHeader, PanelTitle } from "@/components/ui";
+import { IconTile, LinkPreview, Panel, PanelHeader, PanelTitle } from "@/components/ui";
 import { experience } from "@/content";
 import type { Role } from "@/types/content";
 import { Bullets, Chevrons, CollapsibleRow, MetaSeparator, Period, TagList } from "./shared";
@@ -59,7 +59,9 @@ export function Experience() {
             <div className="flex size-6 shrink-0 items-center justify-center rounded-full bg-foreground text-[11px] font-semibold text-background">
               {company.company.charAt(0)}
             </div>
-            <h3 className="m-0 flex-1 text-lg font-medium">{company.company}</h3>
+            <h3 className="m-0 flex-1 text-lg font-medium">
+              {company.preview ? <LinkPreview preview={company.preview} /> : company.company}
+            </h3>
             <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
               {company.location}
               {company.current && (

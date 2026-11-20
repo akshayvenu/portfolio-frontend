@@ -1,5 +1,5 @@
 import { Icon } from "@/components/icons";
-import { IconTile, Panel, PanelSrTitle } from "@/components/ui";
+import { IconTile, LinkPreview, Panel, PanelSrTitle } from "@/components/ui";
 import { profile } from "@/content";
 import { cn } from "@/lib/utils";
 import type { OverviewItem } from "@/types/content";
@@ -10,6 +10,11 @@ function OverviewRow({ item }: { item: OverviewItem }) {
   const value =
     item.dynamic === "local-time" ? (
       <LocalTime timeZone={profile.timeZone} label={profile.timeZoneLabel} />
+    ) : item.preview ? (
+      <>
+        {item.label}
+        <LinkPreview preview={item.preview} />
+      </>
     ) : (
       item.label
     );

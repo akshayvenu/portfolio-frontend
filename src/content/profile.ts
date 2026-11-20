@@ -1,4 +1,5 @@
 import type { Profile } from "@/types/content";
+import { aivision21 } from "./companies";
 
 /**
  * PLACEHOLDER CONTENT — carried over from the design kit.
@@ -15,7 +16,7 @@ export const profile: Profile = {
     "I enjoy building products from the ground up, solving real-world problems, and working in small, high-impact teams where ownership is high and the focus is on tackling meaningful challenges. Always eager to learn, build, and contribute to products that make a difference.",
   ],
   overview: [
-    { icon: "code-xml", label: "AI & Backend Engineer @AIVision21", mono: true },
+    { icon: "code-xml", label: "AI & Backend Engineer @", mono: true, preview: aivision21 },
     { icon: "map-pin", label: "Mumbai, India", mono: true },
     { icon: "phone", label: "+91 9136839960", mono: true, copy: "+919136839960" },
   ],

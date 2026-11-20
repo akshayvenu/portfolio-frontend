@@ -16,3 +16,4 @@ export { IconTile } from "./icon-tile";
 export { Separator } from "./separator";
 export { StackBadge } from "./stack-badge";
 export { HandwrittenNote } from "./handwritten-note";
+export { LinkPreview } from "./link-preview";
