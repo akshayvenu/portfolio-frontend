@@ -1,19 +1,29 @@
 import type { Certification } from "@/types/content";
 
-/** PLACEHOLDER CONTENT — replace with real credentials and verification links. */
+/** Issued through Coursera — `href` is each credential's public verify page. */
 export const certifications: readonly Certification[] = [
   {
-    title: "Meta Front-End Developer Professional Certificate",
-    issuer: "Coursera",
-    date: "04.02.2026",
-    href: "#",
+    title: "Supervised Machine Learning: Classification",
+    issuer: "IBM",
+    issuerKey: "ibm",
+    date: "May 2025",
+    credentialId: "D7WU2SV6UP5Y",
+    href: "https://www.coursera.org/verify/D7WU2SV6UP5Y",
   },
-  { title: "Animations on the Web", issuer: "animations.dev", date: "03.11.2025", href: "#" },
   {
-    title: "AWS Certified Solutions Architect – Associate",
-    issuer: "Amazon Web Services",
-    date: "18.08.2025",
-    href: "#",
+    title: "Supervised Machine Learning: Regression",
+    issuer: "IBM",
+    issuerKey: "ibm",
+    date: "May 2025",
+    credentialId: "SOY95OZ96DL9",
+    href: "https://www.coursera.org/verify/SOY95OZ96DL9",
   },
-  { title: "Google Data Analytics Certificate", issuer: "Google", date: "09.12.2024", href: "#" },
+  {
+    title: "Algorithms for Searching, Sorting, and Indexing",
+    issuer: "Coursera",
+    issuerKey: "coursera",
+    date: "Dec 2024",
+    credentialId: "4GE25YJOFCH1",
+    href: "https://www.coursera.org/verify/4GE25YJOFCH1",
+  },
 ];

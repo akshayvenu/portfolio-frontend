@@ -118,11 +118,16 @@ export interface Project {
   skills: string[];
 }
 
+/** Issuers with a brand token in `styles/tokens/colors.css` (`--brand-<key>`). */
+export type CertificationIssuer = "ibm" | "coursera";
+
 export interface Certification {
   title: string;
   issuer: string;
-  /** `DD.MM.YYYY` */
+  issuerKey: CertificationIssuer;
+  /** `Mon YYYY`, as shown on LinkedIn. */
   date: string;
+  credentialId: string;
   href: string;
 }
 
