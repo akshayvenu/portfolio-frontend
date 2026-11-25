@@ -50,5 +50,6 @@ export const fitnessNavItems: readonly NavItem[] = [
 /** Order matters — this is the left-to-right order of the header switch. */
 export const pageTabs: readonly PageTab[] = [
   { label: "Professional", href: "/", sections: navItems },
-  { label: "Side Quest", href: "/side-quest", sections: fitnessNavItems },
+  // { label: "Side Quest", href: "/side-quest", sections: fitnessNavItems },
+  { label: "Side Quest", href: "/side-quest", sections: [] },
 ];
