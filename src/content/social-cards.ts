@@ -52,6 +52,7 @@ function cardFor(platform: SocialPlatform, formatHandle: (raw: string) => string
 /** Dock order, left to right. */
 export const socialCards: readonly SocialCard[] = [
   cardFor("github", (raw) => `@${raw}`),
+  cardFor("strava", (raw) => `athletes/${raw}`),
   cardFor("x", (raw) => (raw.startsWith("@") ? raw : `@${raw}`)),
   cardFor("linkedin", (raw) => `in/${raw}`),
   {

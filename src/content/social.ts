@@ -7,6 +7,12 @@ export const socialLinks: readonly SocialLink[] = [
     href: "https://github.com/akshayvenu",
     platform: "github",
   },
+  {
+    title: "Strava",
+    handle: "124545511",
+    href: "https://www.strava.com/athletes/124545511",
+    platform: "strava",
+  },
   { title: "X", handle: "@akhyvnu", href: "https://x.com/akhyvnu", platform: "x" },
   {
     title: "LinkedIn",

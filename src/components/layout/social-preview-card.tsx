@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import { GitHubIcon, XIcon } from "@/components/icons";
+import { GitHubIcon, StravaIcon, XIcon } from "@/components/icons";
 import { CardShineLayers, useCardShine } from "@/components/ui/card-shine";
 import type { SocialCard, SocialCardPlatform } from "@/content";
 import { asciiField } from "@/lib/ascii-field";
@@ -33,6 +33,13 @@ const themes: Record<SocialCardPlatform, Theme> = {
     edge: "shadow-[inset_0_1px_0_rgb(255_255_255/0.9)]",
     avatarRing: "ring-white",
     light: "rgb(255 255 255 / 0.85)",
+  },
+  strava: {
+    surface:
+      "bg-[linear-gradient(140deg,var(--card-strava-from),var(--card-strava-to))] text-[var(--card-strava-ink)] ring-black/15",
+    edge: "shadow-[inset_0_1px_0_rgb(255_255_255/0.35)]",
+    avatarRing: "ring-white/70",
+    light: "rgb(255 255 255 / 0.4)",
   },
   x: {
     surface:
@@ -92,6 +99,14 @@ function Decoration({ platform }: { platform: Exclude<SocialCardPlatform, "email
           className="absolute -top-3 -right-10 text-[var(--card-github-mark)] drop-shadow-[-3px_4px_6px_rgb(0_0_0/0.10)]"
         />
       );
+    case "strava":
+      return (
+        <StravaIcon
+          width={220}
+          height={220}
+          className="absolute -top-4 -right-12 text-[var(--card-strava-mark)] drop-shadow-[-3px_4px_8px_rgb(0_0_0/0.12)]"
+        />
+      );
     case "x":
       return (
         <>
@@ -113,7 +128,7 @@ function Decoration({ platform }: { platform: Exclude<SocialCardPlatform, "email
   }
 }
 
-/** Profile layout shared by GitHub, X and LinkedIn: avatar top-left, name below. */
+/** Profile layout shared by GitHub, Strava, X and LinkedIn: avatar top-left, name below. */
 function ProfileBody({ card, theme }: { card: SocialCard; theme: Theme }) {
   return (
     <div className="relative z-[1] flex h-full max-w-[62%] flex-col p-4">

@@ -59,7 +59,7 @@ export interface Profile {
   overviewRight: OverviewItem[];
 }
 
-export type SocialPlatform = "github" | "x" | "linkedin";
+export type SocialPlatform = "github" | "strava" | "x" | "linkedin";
 
 export interface SocialLink {
   title: string;
