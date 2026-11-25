@@ -118,12 +118,21 @@ export interface Project {
   skills: string[];
 }
 
+/** Artwork used on a certification card; anything unknown falls back to `generic`. */
+export type CertificationBrand = "aws" | "google" | "coursera" | "animations" | "generic";
+
 export interface Certification {
   title: string;
   issuer: string;
   /** `DD.MM.YYYY` */
   date: string;
   href: string;
+  brand: CertificationBrand;
+  /** Short lines printed on the card face (the full title sits below the card). */
+  card: {
+    headline: string;
+    caption: string;
+  };
 }
 
 /** GitHub-style contribution intensity, 0 (none) through 4 (most). */

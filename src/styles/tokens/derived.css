@@ -59,6 +59,19 @@
   --card-email-accent: #2b35b8;
   --card-email-ascii: #3a45c9;
 
+  /* Certification cards. Same footprint and finish as the social cards, and
+     likewise fixed across themes. */
+  --cert-aws-from: #2c3b4f;
+  --cert-aws-to: #121a24;
+  --cert-aws-accent: #ff9900;
+  --cert-google-from: #ffffff;
+  --cert-google-to: #e6e8eb;
+  --cert-google-ink: #1f1f1f;
+  --cert-coursera-from: #3f8cff;
+  --cert-coursera-to: #0049c0;
+  --cert-animations-from: #1e1e22;
+  --cert-animations-to: #08080a;
+
   /* Training heatmap ramp — same geometry as the contribution mosaic, tinted
      with the Side Quest accent so the two maps can't be confused. */
   --training-muted: color-mix(in oklab, var(--training) 14%, transparent);

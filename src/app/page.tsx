@@ -1,6 +1,6 @@
 import { ContentColumn, HashedBand, SiteFooter, SiteHeader } from "@/components/layout";
 import {
-  // Certifications,
+  Certifications,
   Contributions,
   Education,
   Experience,
@@ -62,7 +62,7 @@ export default function HomePage() {
           <Experience />
           <Education />
           {/* <Projects /> */}
-          {/* <Certifications /> */}
+          <Certifications />
         </ContentColumn>
       </main>
 
