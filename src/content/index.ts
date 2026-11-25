@@ -2,6 +2,8 @@
 export { siteConfig, navItems, fitnessNavItems, pageTabs } from "./site";
 export { profile } from "./profile";
 export { fitness } from "./fitness";
+export { running } from "./running";
+export type { Race } from "./running";
 export { socialLinks } from "./social";
 export { socialCards } from "./social-cards";
 export type { SocialCard, SocialCardPlatform } from "./social-cards";

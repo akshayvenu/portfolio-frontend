@@ -5,6 +5,7 @@
 @import "../styles/tokens/spacing.css";
 @import "../styles/tokens/derived.css";
 @import "../styles/tokens/effects.css";
+@import "../styles/tokens/charts.css";
 
 /* Light by default; `class="dark"` on <html> (app/layout.tsx) opts into dark. */
 @custom-variant dark (&:where(.dark, .dark *));

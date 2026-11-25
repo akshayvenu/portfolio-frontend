@@ -1,0 +1,60 @@
+/**
+ * Chart tokens for the vendored Bklit UI charts (`src/components/charts`).
+ *
+ * Bklit ships a purple default; here every series and scale step is derived
+ * from the site's own tokens so the charts read as part of the page. The one
+ * hue charts may spend is `--training`, the Side Quest accent.
+ */
+:root {
+  --chart-1: var(--training);
+  --chart-2: var(--foreground);
+  --chart-3: var(--muted-foreground);
+  --chart-4: var(--ring);
+  --chart-5: var(--foreground);
+  --chart-positive: var(--success);
+  --chart-negative: var(--destructive);
+  --chart-background: var(--background);
+  --chart-foreground: var(--foreground);
+  --chart-foreground-muted: var(--muted-foreground);
+  --chart-line-primary: var(--chart-1);
+  --chart-line-secondary: var(--chart-2);
+  --chart-crosshair: var(--ring);
+  --chart-grid: var(--line);
+  --chart-brush-border: var(--chart-grid);
+  --chart-tooltip-background: var(--popover);
+  --chart-tooltip-foreground: var(--popover-foreground);
+  --chart-tooltip-muted: var(--muted-foreground);
+  --chart-marker-background: var(--surface);
+  --chart-marker-border: var(--border);
+  --chart-marker-foreground: var(--foreground);
+  --chart-label: var(--muted-foreground);
+
+  /* Heatmap levels: empty → training accent, mixed toward the page ground. */
+  --chart-scale-mix: var(--background);
+  --chart-scale-01: var(--muted);
+  --chart-scale-02: color-mix(in oklab, var(--chart-1) 30%, var(--chart-scale-mix));
+  --chart-scale-03: color-mix(in oklab, var(--chart-1) 52%, var(--chart-scale-mix));
+  --chart-scale-04: color-mix(in oklab, var(--chart-1) 76%, var(--chart-scale-mix));
+  --chart-scale-05: var(--chart-1);
+  --chart-scale-pattern-color: var(--background);
+
+  --chart-indicator-color: var(--foreground);
+  --chart-indicator-secondary-color: var(--muted);
+  --chart-marker-badge-background: var(--foreground);
+  --chart-marker-badge-foreground: var(--background);
+  --chart-segment-background: color-mix(in oklab, var(--muted-foreground) 6%, transparent);
+  --chart-segment-line: color-mix(in oklab, var(--muted-foreground) 25%, transparent);
+}
+
+@theme inline {
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-chart-label: var(--chart-label);
+  --color-chart-grid: var(--chart-grid);
+  --color-chart-tooltip-background: var(--chart-tooltip-background);
+  --color-chart-tooltip-foreground: var(--chart-tooltip-foreground);
+  --color-chart-tooltip-muted: var(--chart-tooltip-muted);
+}
