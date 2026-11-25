@@ -8,6 +8,7 @@ import {
   RunningHeader,
 } from "@/components/sections/running";
 import { dayKey } from "@/lib/strava/aggregate";
+import { getTrainingSnapshot } from "@/lib/hevy/snapshot";
 import { getStravaSnapshot } from "@/lib/strava/snapshot";
 
 export const metadata: Metadata = {
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 export const revalidate = 3600;
 
 export default async function SideQuestPage() {
-  const snapshot = await getStravaSnapshot();
+  const [snapshot, training] = await Promise.all([getStravaSnapshot(), getTrainingSnapshot()]);
   const today = dayKey(new Date(), process.env.STRAVA_TIMEZONE ?? "Asia/Kolkata");
   const year = today.slice(0, 4);
 
@@ -38,7 +39,7 @@ export default async function SideQuestPage() {
 
         <ContentColumn>
           <PersonalBests bests={snapshot.personalBests} year={year} />
-          <Consistency snapshot={snapshot} />
+          <Consistency snapshot={snapshot} gymDays={training.heatmap} today={today} />
         </ContentColumn>
 
         <HashedBand />

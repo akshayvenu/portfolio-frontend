@@ -2,17 +2,26 @@ import { Icon } from "@/components/icons";
 import type { IconName } from "@/lib/icons";
 import { Panel } from "@/components/ui";
 import { formatKm } from "@/lib/strava/format";
+import type { HeatmapDay } from "@/types/hevy";
 import type { StravaSnapshot } from "@/types/strava";
-import { ConsistencyCalendar } from "./consistency-calendar";
+import { ActivityCalendar } from "./activity-calendar";
 import { MonoLabel, SectionHeading } from "./section-heading";
 import { WeeklyVolume } from "./weekly-volume";
 
 /**
- * Consistency, three ways: streak numbers up top, a year of days as a
- * heatmap, and the last twelve weeks of volume. Streaks are counted in weeks
+ * Consistency, three ways: streak numbers up top, gym and run days week by
+ * week, and the last twelve weeks of volume. Streaks are counted in weeks
  * because a rest day isn't a failure; an empty week is.
  */
-export function Consistency({ snapshot }: { snapshot: StravaSnapshot }) {
+export function Consistency({
+  snapshot,
+  gymDays,
+  today,
+}: {
+  snapshot: StravaSnapshot;
+  gymDays: HeatmapDay[];
+  today: string;
+}) {
   const { streak, days, weeks } = snapshot;
   const yearKm = days.reduce((sum, day) => sum + day.meters, 0);
   const activeDays = days.filter((day) => day.runs > 0).length;
@@ -64,7 +73,7 @@ export function Consistency({ snapshot }: { snapshot: StravaSnapshot }) {
       </dl>
 
       <div id="calendar" className="px-4 pt-6 pb-5">
-        <ConsistencyCalendar days={days} />
+        <ActivityCalendar runDays={days} gymDays={gymDays} today={today} />
       </div>
 
       <div className="border-t border-line px-4 pt-5 pb-2">
