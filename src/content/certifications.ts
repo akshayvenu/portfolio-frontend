@@ -1,7 +1,19 @@
 import type { Certification } from "@/types/content";
 
-/** Issued through Coursera — `href` is each credential's public verify page. */
+/**
+ * Newest first. Earned credentials link to their public verify page; an
+ * `upcoming` one is in progress and has no link yet.
+ */
 export const certifications: readonly Certification[] = [
+  {
+    title: "AWS Certified Solutions Architect – Associate",
+    issuer: "Amazon Web Services",
+    date: "",
+    href: "#",
+    brand: "aws",
+    status: "upcoming",
+    card: { headline: "Solutions Architect", caption: "Associate" },
+  },
   {
     title: "Supervised Machine Learning: Classification",
     issuer: "IBM",

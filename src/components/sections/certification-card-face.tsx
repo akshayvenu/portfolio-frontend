@@ -1,6 +1,8 @@
 import { BadgeCheck } from "lucide-react";
-import { useId } from "react";
+import { useInView } from "motion/react";
+import { useEffect, useId, type CSSProperties } from "react";
 import { PREVIEW_CARD_HEIGHT } from "@/components/layout/social-preview-card";
+import { CardShineLayers, useCardShine } from "@/components/ui/card-shine";
 import { cn } from "@/lib/utils";
 import type { Certification, CertificationBrand } from "@/types/content";
 
@@ -11,6 +13,8 @@ interface Face {
   edge: string;
   /** The small credential tile in the top-left corner. */
   tile: string;
+  /** Colour of the sweeping light band and pointer glare — brighter on light surfaces. */
+  light: string;
 }
 
 const faces: Record<CertificationBrand, Face> = {
@@ -19,36 +23,42 @@ const faces: Record<CertificationBrand, Face> = {
       "bg-[linear-gradient(140deg,var(--cert-aws-from),var(--cert-aws-to))] text-white ring-white/10",
     edge: "shadow-[inset_0_1px_0_rgb(255_255_255/0.10)]",
     tile: "bg-[var(--cert-aws-accent)] text-[var(--cert-aws-to)]",
+    light: "rgb(255 255 255 / 0.18)",
   },
   google: {
     surface:
       "bg-[linear-gradient(140deg,var(--cert-google-from),var(--cert-google-to))] text-[var(--cert-google-ink)] ring-black/10",
     edge: "shadow-[inset_0_1px_0_rgb(255_255_255/0.9)]",
     tile: "bg-white text-[#4285f4] ring-1 ring-black/10",
+    light: "rgb(255 255 255 / 0.85)",
   },
   coursera: {
     surface:
       "bg-[linear-gradient(140deg,var(--cert-coursera-from),var(--cert-coursera-to))] text-white ring-black/15",
     edge: "shadow-[inset_0_1px_0_rgb(255_255_255/0.35)]",
     tile: "bg-white text-[var(--cert-coursera-to)]",
+    light: "rgb(255 255 255 / 0.4)",
   },
   ibm: {
     surface:
       "bg-[linear-gradient(140deg,var(--cert-ibm-from),var(--cert-ibm-to))] text-white ring-black/15",
     edge: "shadow-[inset_0_1px_0_rgb(255_255_255/0.25)]",
     tile: "bg-white text-[var(--cert-ibm-to)]",
+    light: "rgb(255 255 255 / 0.4)",
   },
   animations: {
     surface:
       "bg-[linear-gradient(140deg,var(--cert-animations-from),var(--cert-animations-to))] text-[#fafafa] ring-white/10",
     edge: "shadow-[inset_0_1px_0_rgb(255_255_255/0.08)]",
     tile: "bg-white/10 text-white ring-1 ring-white/15",
+    light: "rgb(255 255 255 / 0.16)",
   },
   generic: {
     surface:
       "bg-[linear-gradient(140deg,var(--card-github-from),var(--card-github-to))] text-[var(--card-github-ink)] ring-black/10",
     edge: "shadow-[inset_0_1px_0_rgb(255_255_255/0.9)]",
     tile: "bg-[var(--card-github-ink)] text-white",
+    light: "rgb(255 255 255 / 0.85)",
   },
 };
 
@@ -205,6 +215,11 @@ function formatIssued(date: string): string {
   return name && year ? `${name} ${year}` : date;
 }
 
+/** Sweep/glare colour for a card, matched to how dark its surface is. */
+export function certificationLight(brand: CertificationBrand): string {
+  return (faces[brand] ?? faces.generic).light;
+}
+
 interface CertificationCardFaceProps {
   cert: Certification;
   className?: string;
@@ -220,17 +235,37 @@ export function CertificationCardFace({ cert, className, style }: CertificationC
   const face = faces[cert.brand] ?? faces.generic;
   const Art = art[cert.brand] ?? GenericArt;
 
+  // The left → right light sweep (plus pointer glare). Tilt is handled by <Tilt>
+  // around the card, so the shine's own tilt is switched off.
+  const { rootRef, sheenRef, glareRef, sweep, handlers } = useCardShine({
+    maxTilt: 0,
+    sweepOnMount: false,
+  });
+  const seen = useInView(rootRef, { once: true, amount: 0.6 });
+  useEffect(() => {
+    if (seen) sweep(0.35);
+  }, [seen, sweep]);
+
   return (
     <div
+      ref={rootRef}
+      {...handlers}
       aria-hidden="true"
       className={cn(
         "relative isolate overflow-hidden rounded-xl ring-1 ring-inset",
         face.surface,
         className,
       )}
-      style={{ height: PREVIEW_CARD_HEIGHT, ...style }}
+      style={
+        {
+          height: PREVIEW_CARD_HEIGHT,
+          "--card-light": certificationLight(cert.brand),
+          ...style,
+        } as CSSProperties
+      }
     >
       <Art />
+      <CardShineLayers sheenRef={sheenRef} glareRef={glareRef} />
 
       <div className="relative z-[1] flex h-full max-w-[68%] flex-col p-4">
         <div
@@ -247,9 +282,19 @@ export function CertificationCardFace({ cert, className, style }: CertificationC
             {cert.card.headline}
           </p>
           <p className="m-0 mt-0.5 truncate text-[12.5px] opacity-60">{cert.card.caption}</p>
-          <p className="m-0 mt-3 font-mono text-[10.5px] tracking-[0.06em] uppercase opacity-45">
-            Issued {formatIssued(cert.date)}
-          </p>
+          {cert.status === "upcoming" ? (
+            <p className="m-0 mt-3 flex items-center gap-1.5 font-mono text-[10.5px] tracking-[0.06em] uppercase opacity-70">
+              <span className="relative flex size-1.5">
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-current opacity-60 motion-reduce:animate-none" />
+                <span className="relative inline-flex size-1.5 rounded-full bg-current" />
+              </span>
+              Coming soon
+            </p>
+          ) : (
+            <p className="m-0 mt-3 font-mono text-[10.5px] tracking-[0.06em] uppercase opacity-45">
+              Issued {formatIssued(cert.date)}
+            </p>
+          )}
         </div>
       </div>
 

@@ -124,8 +124,10 @@ export type CertificationBrand = "aws" | "google" | "coursera" | "ibm" | "animat
 export interface Certification {
   title: string;
   issuer: string;
-  /** `DD.MM.YYYY` (printed as `Mon YYYY`) or already `Mon YYYY`. */
+  /** `DD.MM.YYYY` (printed as `Mon YYYY`) or already `Mon YYYY`. Empty while `upcoming`. */
   date: string;
+  /** `upcoming` = still being earned: the card says "Coming soon" and has no link. */
+  status?: "earned" | "upcoming";
   href: string;
   brand: CertificationBrand;
   /** Short lines printed on the card face (the full title sits below the card). */

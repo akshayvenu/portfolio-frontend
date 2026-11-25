@@ -4,7 +4,6 @@ import {
   motion,
   useMotionTemplate,
   useMotionValue,
-  useReducedMotion,
   useSpring,
   useTransform,
   type MotionStyle,
@@ -16,19 +15,14 @@ interface TiltProps {
   children: ReactNode;
   className?: string;
   style?: MotionStyle;
-  /** Maximum rotation, in degrees, when the pointer is at an edge. */
+  /** Maximum tilt in degrees at the card edge. */
   rotationFactor?: number;
-  /** Tilt away from the pointer instead of towards it. */
+  /** Tilt away from the pointer instead of toward it. */
   isReverse?: boolean;
   springOptions?: SpringOptions;
 }
 
-/**
- * Pointer-driven 3D tilt (after motion-primitives' `Tilt`). The pointer's
- * position over the element, normalised to -0.5…0.5, feeds two springs that
- * drive rotateX/rotateY, so the card eases into and out of every movement.
- * Touch input and reduced-motion users get a static element.
- */
+/** Pointer-following 3D tilt, after motion-primitives' `Tilt`. */
 export function Tilt({
   children,
   className,
@@ -38,34 +32,25 @@ export function Tilt({
   springOptions,
 }: TiltProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduceMotion = useReducedMotion();
-
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const xSpring = useSpring(x, springOptions);
   const ySpring = useSpring(y, springOptions);
 
-  const rotateX = useTransform(
-    ySpring,
-    [-0.5, 0.5],
-    isReverse ? [rotationFactor, -rotationFactor] : [-rotationFactor, rotationFactor],
-  );
-  const rotateY = useTransform(
-    xSpring,
-    [-0.5, 0.5],
-    isReverse ? [-rotationFactor, rotationFactor] : [rotationFactor, -rotationFactor],
-  );
-
+  const rotateX = useTransform(ySpring, [-0.5, 0.5], [rotationFactor, -rotationFactor].map((v) => (isReverse ? -v : v)));
+  const rotateY = useTransform(xSpring, [-0.5, 0.5], [-rotationFactor, rotationFactor].map((v) => (isReverse ? -v : v)));
   const transform = useMotionTemplate`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 
-  function handlePointerMove(event: ReactPointerEvent<HTMLDivElement>) {
-    if (reduceMotion || event.pointerType === "touch" || !ref.current) return;
-    const box = ref.current.getBoundingClientRect();
+  function onPointerMove(event: ReactPointerEvent<HTMLDivElement>) {
+    if (event.pointerType === "touch") return;
+    const el = ref.current;
+    if (!el) return;
+    const box = el.getBoundingClientRect();
     x.set((event.clientX - box.left) / box.width - 0.5);
     y.set((event.clientY - box.top) / box.height - 0.5);
   }
 
-  function handlePointerLeave() {
+  function reset() {
     x.set(0);
     y.set(0);
   }
@@ -74,13 +59,9 @@ export function Tilt({
     <motion.div
       ref={ref}
       className={className}
-      style={{
-        transformStyle: "preserve-3d",
-        ...style,
-        transform: reduceMotion ? undefined : transform,
-      }}
-      onPointerMove={handlePointerMove}
-      onPointerLeave={handlePointerLeave}
+      style={{ transformStyle: "preserve-3d", ...style, transform }}
+      onPointerMove={onPointerMove}
+      onPointerLeave={reset}
     >
       {children}
     </motion.div>

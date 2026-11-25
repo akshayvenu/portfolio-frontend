@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
+import type { CSSProperties } from "react";
 import { GitHubIcon, XIcon } from "@/components/icons";
+import { CardShineLayers, useCardShine } from "@/components/ui/card-shine";
 import type { SocialCard, SocialCardPlatform } from "@/content";
 import { asciiField } from "@/lib/ascii-field";
 import { gsap, prefersReducedMotion, useGSAP } from "@/lib/gsap";
@@ -189,95 +190,36 @@ interface SocialPreviewCardProps {
  */
 export function SocialPreviewCard({ card, className }: SocialPreviewCardProps) {
   const theme = themes[card.platform];
-  const rootRef = useRef<HTMLDivElement>(null);
-  const sheenRef = useRef<HTMLDivElement>(null);
-  const glareRef = useRef<HTMLDivElement>(null);
-  const pointer = useRef<{
-    tiltX: gsap.QuickToFunc;
-    tiltY: gsap.QuickToFunc;
-    glareX: gsap.QuickToFunc;
-    glareY: gsap.QuickToFunc;
-  } | null>(null);
+  const { rootRef, sheenRef, glareRef, handlers } = useCardShine({ maxTilt: MAX_TILT });
 
-  const { contextSafe } = useGSAP(
+  useGSAP(
     () => {
-      const root = rootRef.current;
-      const sheen = sheenRef.current;
-      const glare = glareRef.current;
-      if (!root || !sheen || !glare || prefersReducedMotion()) return;
-
-      gsap.set(root, { transformPerspective: 700 });
-      pointer.current = {
-        tiltX: gsap.quickTo(root, "rotationX", { duration: 0.6, ease: "power3.out" }),
-        tiltY: gsap.quickTo(root, "rotationY", { duration: 0.6, ease: "power3.out" }),
-        glareX: gsap.quickTo(glare, "x", { duration: 0.35, ease: "power3.out" }),
-        glareY: gsap.quickTo(glare, "y", { duration: 0.35, ease: "power3.out" }),
-      };
-
-      // Light sweep as the card lands.
-      gsap.fromTo(
-        sheen,
-        { xPercent: 0 },
-        { xPercent: 200, duration: 1.1, ease: "power2.inOut", delay: 0.12 },
-      );
-
-      if (card.platform === "email") {
-        gsap.from("[data-ascii='top-left']", {
-          clipPath: "inset(0% 100% 100% 0%)",
-          duration: 0.9,
-          ease: "power3.out",
-        });
-        gsap.from("[data-ascii='bottom-right']", {
-          clipPath: "inset(100% 0% 0% 100%)",
-          duration: 0.9,
-          ease: "power3.out",
-          delay: 0.08,
-        });
-        gsap.to("[data-wordmark]", {
-          duration: 0.7,
-          scrambleText: { text: card.designation, chars: "$%#*+=-:.", speed: 0.6 },
-        });
-      }
+      if (card.platform !== "email" || prefersReducedMotion()) return;
+      gsap.from("[data-ascii='top-left']", {
+        clipPath: "inset(0% 100% 100% 0%)",
+        duration: 0.9,
+        ease: "power3.out",
+      });
+      gsap.from("[data-ascii='bottom-right']", {
+        clipPath: "inset(100% 0% 0% 100%)",
+        duration: 0.9,
+        ease: "power3.out",
+        delay: 0.08,
+      });
+      gsap.to("[data-wordmark]", {
+        duration: 0.7,
+        scrambleText: { text: card.designation, chars: "$%#*+=-:.", speed: 0.6 },
+      });
     },
     { scope: rootRef },
   );
-
-  const sweep = contextSafe(() => {
-    const sheen = sheenRef.current;
-    if (!sheen || !pointer.current || gsap.isTweening(sheen)) return;
-    gsap.fromTo(sheen, { xPercent: 0 }, { xPercent: 200, duration: 0.95, ease: "power2.inOut" });
-  });
-
-  const track = contextSafe((event: ReactPointerEvent<HTMLDivElement>) => {
-    const root = rootRef.current;
-    const handlers = pointer.current;
-    if (!root || !handlers) return;
-    const box = root.getBoundingClientRect();
-    const x = event.clientX - box.left;
-    const y = event.clientY - box.top;
-    handlers.tiltY((x / box.width - 0.5) * MAX_TILT * 2);
-    handlers.tiltX(-(y / box.height - 0.5) * MAX_TILT * 2);
-    handlers.glareX(x);
-    handlers.glareY(y);
-    gsap.to(glareRef.current, { opacity: 1, duration: 0.3, overwrite: "auto" });
-  });
-
-  const settle = contextSafe(() => {
-    const handlers = pointer.current;
-    if (!handlers) return;
-    handlers.tiltX(0);
-    handlers.tiltY(0);
-    gsap.to(glareRef.current, { opacity: 0, duration: 0.4, overwrite: "auto" });
-  });
 
   const lightStyle = { "--card-light": theme.light } as CSSProperties;
 
   return (
     <div
       ref={rootRef}
-      onPointerEnter={sweep}
-      onPointerMove={track}
-      onPointerLeave={settle}
+      {...handlers}
       className={cn(
         "relative isolate overflow-hidden rounded-2xl shadow-[0_24px_48px_-16px_rgb(0_0_0/0.35),0_4px_12px_-4px_rgb(0_0_0/0.12)] ring-1 will-change-transform",
         theme.surface,
@@ -294,19 +236,7 @@ export function SocialPreviewCard({ card, className }: SocialPreviewCardProps) {
         </>
       )}
 
-      {/* Pointer glare: a soft spot of light that trails the cursor. */}
-      <div
-        ref={glareRef}
-        aria-hidden="true"
-        className="pointer-events-none absolute top-0 left-0 z-[2] -mt-[110px] -ml-[110px] size-[220px] rounded-full bg-[radial-gradient(closest-side,var(--card-light),transparent)] opacity-0 mix-blend-soft-light"
-      />
-
-      {/* Light sweep: starts fully off the left edge, travels to the right. */}
-      <div
-        ref={sheenRef}
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 left-[-100%] z-[3] w-full bg-[linear-gradient(105deg,transparent_32%,var(--card-light)_50%,transparent_68%)]"
-      />
+      <CardShineLayers sheenRef={sheenRef} glareRef={glareRef} />
 
       {/* Edge highlight sits above everything so it reads as the card's own rim. */}
       <div

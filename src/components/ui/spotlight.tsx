@@ -1,72 +1,70 @@
 "use client";
 
-import { motion, useSpring, useTransform, type SpringOptions } from "motion/react";
+import {
+  motion,
+  useSpring,
+  useTransform,
+  type SpringOptions,
+} from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface SpotlightProps {
-  className?: string;
   /** Diameter of the light, in px. */
   size?: number;
+  className?: string;
   springOptions?: SpringOptions;
 }
 
 /**
- * A soft disc of light that trails the pointer across its parent (after
- * motion-primitives' `Spotlight`). It listens on the parent element, so it can
- * be dropped into any card as the first child; the parent is made the clipping
- * context so the glow never spills past the card's rounded corners.
+ * A soft spot of light that trails the pointer inside its parent, after
+ * motion-primitives' `Spotlight`. The parent must be `relative`.
  */
-export function Spotlight({
-  className,
-  size = 200,
-  springOptions = { bounce: 0 },
-}: SpotlightProps) {
+export function Spotlight({ size = 200, className, springOptions }: SpotlightProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [hovered, setHovered] = useState(false);
+  const [parent, setParent] = useState<HTMLElement | null>(null);
+  const [active, setActive] = useState(false);
 
   const mouseX = useSpring(0, springOptions);
   const mouseY = useSpring(0, springOptions);
-  const left = useTransform(mouseX, (value) => `${value - size / 2}px`);
-  const top = useTransform(mouseY, (value) => `${value - size / 2}px`);
+  const left = useTransform(mouseX, (v) => v - size / 2);
+  const top = useTransform(mouseY, (v) => v - size / 2);
 
   useEffect(() => {
-    const parent = ref.current?.parentElement;
+    const el = ref.current?.parentElement;
+    if (!el) return;
+    el.style.position ||= "relative";
+    el.style.overflow ||= "hidden";
+    setParent(el);
+  }, []);
+
+  useEffect(() => {
     if (!parent) return;
-
-    parent.style.position = "relative";
-    parent.style.overflow = "hidden";
-
-    function onMove(event: PointerEvent) {
+    const move = (event: PointerEvent) => {
       if (event.pointerType === "touch") return;
-      const box = parent!.getBoundingClientRect();
+      const box = parent.getBoundingClientRect();
       mouseX.set(event.clientX - box.left);
       mouseY.set(event.clientY - box.top);
-    }
-    function onEnter(event: PointerEvent) {
-      if (event.pointerType !== "touch") setHovered(true);
-    }
-    function onLeave() {
-      setHovered(false);
-    }
-
-    parent.addEventListener("pointermove", onMove);
-    parent.addEventListener("pointerenter", onEnter);
-    parent.addEventListener("pointerleave", onLeave);
-    return () => {
-      parent.removeEventListener("pointermove", onMove);
-      parent.removeEventListener("pointerenter", onEnter);
-      parent.removeEventListener("pointerleave", onLeave);
     };
-  }, [mouseX, mouseY]);
+    const enter = () => setActive(true);
+    const leave = () => setActive(false);
+    parent.addEventListener("pointermove", move);
+    parent.addEventListener("pointerenter", enter);
+    parent.addEventListener("pointerleave", leave);
+    return () => {
+      parent.removeEventListener("pointermove", move);
+      parent.removeEventListener("pointerenter", enter);
+      parent.removeEventListener("pointerleave", leave);
+    };
+  }, [parent, mouseX, mouseY]);
 
   return (
     <motion.div
       ref={ref}
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute rounded-full blur-xl transition-opacity duration-200",
-        hovered ? "opacity-100" : "opacity-0",
+        "pointer-events-none absolute rounded-full transition-opacity duration-200",
+        active ? "opacity-100" : "opacity-0",
         className,
       )}
       style={{ width: size, height: size, left, top }}

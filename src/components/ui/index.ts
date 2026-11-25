@@ -17,5 +17,6 @@ export { Separator } from "./separator";
 export { StackBadge } from "./stack-badge";
 export { HandwrittenNote } from "./handwritten-note";
 export { LinkPreview } from "./link-preview";
+export { CardShineLayers, useCardShine } from "./card-shine";
 export { Tilt } from "./tilt";
 export { Spotlight } from "./spotlight";
