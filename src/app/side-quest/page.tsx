@@ -1,52 +1,22 @@
 import type { Metadata } from "next";
-import { ContentColumn, HashedBand, SiteFooter, SiteHeader } from "@/components/layout";
-import {
-  Consistency,
-  PersonalBests,
-  RaceGoals,
-  RecentRuns,
-  RunningHeader,
-} from "@/components/sections/running";
-import { dayKey } from "@/lib/strava/aggregate";
-import { getTrainingSnapshot } from "@/lib/hevy/snapshot";
-import { getStravaSnapshot } from "@/lib/strava/snapshot";
+import { ContentColumn, SiteFooter, SiteHeader } from "@/components/layout";
 
 export const metadata: Metadata = {
   title: "Side Quest",
-  description:
-    "Running log pulled live from Strava — personal bests, recent runs, streaks and the races ahead.",
+  description: "Under development.",
   alternates: { canonical: "/side-quest" },
 };
 
-/** The Strava snapshot is cached for an hour; this keeps the page in step. */
-export const revalidate = 3600;
-
-export default async function SideQuestPage() {
-  const [snapshot, training] = await Promise.all([getStravaSnapshot(), getTrainingSnapshot()]);
-  const today = dayKey(new Date(), process.env.STRAVA_TIMEZONE ?? "Asia/Kolkata");
-  const year = today.slice(0, 4);
-
+export default function SideQuestPage() {
   return (
     <>
       <SiteHeader />
 
       <main>
         <ContentColumn>
-          <RunningHeader snapshot={snapshot} />
-        </ContentColumn>
-
-        <HashedBand />
-
-        <ContentColumn>
-          <PersonalBests bests={snapshot.personalBests} year={year} />
-          <Consistency snapshot={snapshot} gymDays={training.heatmap} today={today} />
-        </ContentColumn>
-
-        <HashedBand />
-
-        <ContentColumn>
-          <RecentRuns runs={snapshot.recent} year={year} />
-          <RaceGoals today={today} />
+          <div className="flex min-h-[60dvh] items-center justify-center px-4 text-center">
+            <p className="m-0 text-2xl font-medium tracking-[-0.01em]">Under development</p>
+          </div>
         </ContentColumn>
       </main>
 
