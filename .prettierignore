@@ -3,3 +3,7 @@ node_modules
 bun.lock
 bun.lockb
 public
+
+# Vendored Bklit UI charts (shadcn registry) — kept byte-identical to upstream.
+src/components/charts
+src/components/shimmering-text.tsx
