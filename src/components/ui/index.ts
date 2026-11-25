@@ -17,3 +17,5 @@ export { Separator } from "./separator";
 export { StackBadge } from "./stack-badge";
 export { HandwrittenNote } from "./handwritten-note";
 export { LinkPreview } from "./link-preview";
+export { Tilt } from "./tilt";
+export { Spotlight } from "./spotlight";

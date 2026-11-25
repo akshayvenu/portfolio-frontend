@@ -36,10 +36,6 @@
   /* Side Quest accent — the one hue the training page is allowed to spend, so
      the log reads as a different mode of the site without a second theme. */
   --training: oklch(0.66 0.19 42);
-
-  /* Issuer brand hues — only revealed on hover in the Certifications cards. */
-  --brand-ibm: oklch(0.55 0.24 262);
-  --brand-coursera: oklch(0.5 0.2 259);
 }
 
 .dark {
@@ -71,7 +67,4 @@
   --selection-foreground: oklch(0.141 0.005 285.823);
 
   --training: oklch(0.74 0.17 48);
-
-  --brand-ibm: oklch(0.66 0.18 258);
-  --brand-coursera: oklch(0.64 0.17 256);
 }

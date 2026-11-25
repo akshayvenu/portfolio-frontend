@@ -118,17 +118,21 @@ export interface Project {
   skills: string[];
 }
 
-/** Issuers with a brand token in `styles/tokens/colors.css` (`--brand-<key>`). */
-export type CertificationIssuer = "ibm" | "coursera";
+/** Artwork used on a certification card; anything unknown falls back to `generic`. */
+export type CertificationBrand = "aws" | "google" | "coursera" | "ibm" | "animations" | "generic";
 
 export interface Certification {
   title: string;
   issuer: string;
-  issuerKey: CertificationIssuer;
-  /** `Mon YYYY`, as shown on LinkedIn. */
+  /** `DD.MM.YYYY` (printed as `Mon YYYY`) or already `Mon YYYY`. */
   date: string;
-  credentialId: string;
   href: string;
+  brand: CertificationBrand;
+  /** Short lines printed on the card face (the full title sits below the card). */
+  card: {
+    headline: string;
+    caption: string;
+  };
 }
 
 /** GitHub-style contribution intensity, 0 (none) through 4 (most). */

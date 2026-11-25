@@ -1,162 +1,260 @@
 "use client";
 
-import { useReducedMotion } from "motion/react";
-import { Icon } from "@/components/icons";
-import { Spotlight } from "@/components/motion-primitives/spotlight";
-import { Tilt } from "@/components/motion-primitives/tilt";
-import { Panel, PanelHeader, PanelTitle } from "@/components/ui";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  MotionConfig,
+  motion,
+  useInView,
+  useMotionValue,
+  useScroll,
+  useSpring,
+  useTransform,
+  type SpringOptions,
+  type Variants,
+} from "motion/react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { PREVIEW_CARD_WIDTH } from "@/components/layout/social-preview-card";
+import { Panel, PanelHeader, PanelTitle, Spotlight, Tilt } from "@/components/ui";
 import { certifications } from "@/content";
-import { cn } from "@/lib/utils";
-import type { Certification, CertificationIssuer } from "@/types/content";
+import type { Certification } from "@/types/content";
+import { CertificationCardFace } from "./certification-card-face";
 
-/** Same spring as the motion-primitives "Tilt with Spotlight" example. */
-const SPRING = { stiffness: 26.7, damping: 4.1, mass: 0.2 };
+/** Gap between cards, in px — also the distance one arrow press travels past a card. */
+const GAP = 16;
 
 /**
- * Each issuer scopes its brand hue into `--brand` so the face can reveal it on
- * hover without a per-issuer branch in every class list.
+ * Certification cards render at 80% of the dock's social-card size. The face is
+ * laid out at full size and CSS-zoomed, so its artwork and type keep their
+ * proportions instead of being re-tuned for a second size.
  */
-const brandScope: Record<CertificationIssuer, string> = {
-  ibm: "[--brand:var(--brand-ibm)]",
-  coursera: "[--brand:var(--brand-coursera)]",
+const CARD_SCALE = 0.8;
+const CARD_WIDTH = Math.round(PREVIEW_CARD_WIDTH * CARD_SCALE);
+
+/** The springs from motion-primitives' "Tilt with Spotlight" example. */
+const tiltSpring: SpringOptions = { stiffness: 26.7, damping: 4.1, mass: 0.2 };
+
+const listVariants: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
 };
 
-function IssuerWordmark({ issuer }: { issuer: CertificationIssuer }) {
-  const base =
-    "text-muted-foreground transition-colors duration-700 group-hover:text-(--brand) group-focus-visible:text-(--brand)";
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 18, filter: "blur(6px)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      y: { type: "spring", stiffness: 240, damping: 26 },
+      default: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+    },
+    transitionEnd: { filter: "none" },
+  },
+};
 
-  if (issuer === "ibm") {
-    return (
-      <span className={cn(base, "font-mono text-3xl leading-none font-black tracking-[0.22em]")}>
-        IBM
-      </span>
-    );
-  }
+function isRealLink(href: string): boolean {
+  return href.length > 0 && href !== "#";
+}
+
+/**
+ * One credential: the tilting, spotlit card face with its caption underneath —
+ * issuer in mono, full title in sans — mirroring motion-primitives' "Tilt with
+ * Spotlight". The face rests in greyscale and blooms into colour on hover/focus
+ * (always in colour on touch screens, which have no hover).
+ */
+function CertificationCard({ cert }: { cert: Certification }) {
+  const linked = isRealLink(cert.href);
+  const Wrapper = linked ? "a" : "div";
 
   return (
-    <span className={cn(base, "font-sans text-2xl leading-none font-semibold tracking-tight")}>
-      coursera
-    </span>
+    <motion.li
+      variants={itemVariants}
+      className="shrink-0 snap-start"
+      style={{ width: CARD_WIDTH }}
+    >
+      <Wrapper
+        {...(linked ? { href: cert.href, target: "_blank", rel: "noopener noreferrer" } : {})}
+        className="group block rounded-xl text-inherit no-underline outline-none"
+      >
+        <Tilt
+          rotationFactor={6}
+          isReverse
+          springOptions={tiltSpring}
+          style={{ transformOrigin: "center center" }}
+          className="relative rounded-xl shadow-[0_18px_40px_-18px_rgb(0_0_0/0.4),0_3px_10px_-4px_rgb(0_0_0/0.12)] will-change-transform group-focus-visible:ring-2 group-focus-visible:ring-ring group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-background"
+        >
+          <Spotlight
+            size={200}
+            springOptions={tiltSpring}
+            className="z-10 bg-[radial-gradient(circle_at_center,rgb(255_255_255/0.5),rgb(255_255_255/0.2),rgb(255_255_255/0.1),transparent_80%)] blur-2xl"
+          />
+          <CertificationCardFace
+            cert={cert}
+            style={{ zoom: CARD_SCALE }}
+            className="grayscale transition-[filter] duration-700 ease-out group-hover:grayscale-0 group-focus-visible:grayscale-0 [@media(hover:none)]:grayscale-0"
+          />
+        </Tilt>
+
+        <div className="flex flex-col gap-0.5 pt-3">
+          <h3 className="m-0 font-mono text-sm font-medium text-muted-foreground">{cert.issuer}</h3>
+          <p className="m-0 text-sm leading-snug text-foreground">{cert.title}</p>
+        </div>
+      </Wrapper>
+    </motion.li>
+  );
+}
+
+function RailButton({
+  direction,
+  disabled,
+  onClick,
+}: {
+  direction: "prev" | "next";
+  disabled: boolean;
+  onClick: () => void;
+}) {
+  const Chevron = direction === "prev" ? ChevronLeft : ChevronRight;
+  return (
+    <motion.button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      whileTap={{ scale: 0.9 }}
+      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+      aria-label={direction === "prev" ? "Previous certifications" : "Next certifications"}
+      className="inline-flex size-8 items-center justify-center rounded-lg border border-border text-foreground/70 transition-[color,background-color,opacity] duration-150 hover:bg-muted hover:text-foreground disabled:pointer-events-none disabled:opacity-35"
+    >
+      <Chevron size={16} aria-hidden="true" />
+    </motion.button>
   );
 }
 
 /**
- * The card face: a typographic credential rather than a photo. It sits muted
- * at rest and lets the issuer's colour bleed in under the spotlight on hover,
- * echoing the grayscale → colour reveal of the original demo.
+ * Certifications as a horizontally scrollable rail — user-driven (trackpad,
+ * touch swipe, shift + wheel, arrow keys or the header buttons), snapping card
+ * by card, never auto-playing. Edges fade in only when there is more to see,
+ * and a spring-smoothed thumb tracks the position.
  */
-function CredentialFace({ cert, animate }: { cert: Certification; animate: boolean }) {
-  return (
-    <div
-      className={cn(
-        "relative flex aspect-[16/10] flex-col justify-between overflow-hidden rounded-lg border border-line bg-surface p-4",
-        "shadow-[0_1px_0_0_var(--line),0_8px_24px_-16px_color-mix(in_oklab,var(--foreground)_30%,transparent)]",
-        brandScope[cert.issuerKey],
-      )}
-    >
-      {animate && (
-        <Spotlight
-          className="z-10 from-foreground/10 via-foreground/5 to-transparent blur-2xl dark:from-foreground/30 dark:via-foreground/10 dark:to-foreground/5"
-          size={248}
-          springOptions={SPRING}
-        />
-      )}
-
-      <div aria-hidden="true" className="diagonal-stripes absolute inset-0 opacity-70" />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(120%_90%_at_0%_0%,color-mix(in_oklab,var(--brand)_18%,transparent),transparent_65%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100 group-focus-visible:opacity-100"
-      />
-
-      <div className="relative flex items-start justify-between">
-        <div className="flex flex-col gap-2">
-          <IssuerWordmark issuer={cert.issuerKey} />
-          <span className="font-mono text-[10px] tracking-[0.18em] text-muted-foreground uppercase">
-            Course Certificate
-          </span>
-        </div>
-        <Icon
-          name="badge-check"
-          size={18}
-          className="text-muted-foreground transition-colors duration-700 group-hover:text-(--brand) group-focus-visible:text-(--brand)"
-        />
-      </div>
-
-      <div className="relative flex items-center justify-between gap-3 border-t border-dashed border-line pt-2.5 font-mono text-[10px] tracking-[0.14em] text-muted-foreground uppercase">
-        <span>Credential ID</span>
-        <span className="text-foreground/80 tabular-nums">{cert.credentialId}</span>
-      </div>
-    </div>
-  );
-}
-
-function CertificationCard({ cert, animate }: { cert: Certification; animate: boolean }) {
-  return (
-    <a
-      href={cert.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`${cert.title} — ${cert.issuer}, ${cert.date} (verify credential, opens in a new tab)`}
-      className="group block rounded-lg text-inherit no-underline outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
-    >
-      <Tilt
-        rotationFactor={animate ? 6 : 0}
-        isRevese
-        style={{ transformOrigin: "center center" }}
-        springOptions={SPRING}
-        className="relative rounded-lg"
-      >
-        <CredentialFace cert={cert} animate={animate} />
-      </Tilt>
-
-      <div className="flex flex-col gap-0.5 pt-3">
-        <p className="m-0 font-mono text-xs text-muted-foreground">
-          {cert.issuer} · {cert.date}
-        </p>
-        <h3 className="m-0 flex items-start justify-between gap-2 text-base leading-[1.35] font-medium">
-          {cert.title}
-          <Icon
-            name="arrow-up-right"
-            size={15}
-            className="mt-0.5 shrink-0 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-foreground"
-          />
-        </h3>
-      </div>
-    </a>
-  );
-}
-
 export function Certifications() {
-  // `null` during SSR, so the tilt is on by default and switched off on the client if asked.
-  const animate = !useReducedMotion();
-  const hasFiller = certifications.length % 2 === 1;
+  const railRef = useRef<HTMLDivElement>(null);
+  const [scrollable, setScrollable] = useState(false);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
+  // Watch the rail (viewport-wide), not the list: the list is as wide as every card
+  // together, so on a phone too little of it is ever on screen to cross a threshold.
+  const inView = useInView(railRef, { once: true, amount: 0.3 });
+
+  /** Visible share of the rail (0–1) — the thumb's width. */
+  const visible = useMotionValue(1);
+  const { scrollXProgress } = useScroll({ container: railRef });
+  const progress = useSpring(scrollXProgress, { stiffness: 220, damping: 32, mass: 0.4 });
+  const thumbWidth = useTransform(visible, (share) => `${share * 100}%`);
+  // translateX is relative to the thumb itself, so its travel is (1 / share − 1) widths.
+  const thumbX = useTransform([progress, visible], ([p = 0, share = 1]: number[]) =>
+    share > 0 ? `${Math.min(Math.max(p, 0), 1) * (1 / share - 1) * 100}%` : "0%",
+  );
+
+  const sync = useCallback(() => {
+    const rail = railRef.current;
+    if (!rail) return;
+    const max = rail.scrollWidth - rail.clientWidth;
+    setScrollable(max > 2);
+    setAtStart(rail.scrollLeft <= 2);
+    setAtEnd(rail.scrollLeft >= max - 2);
+    visible.set(rail.scrollWidth > 0 ? rail.clientWidth / rail.scrollWidth : 1);
+  }, [visible]);
+
+  useEffect(() => {
+    const rail = railRef.current;
+    if (!rail) return;
+    sync();
+    rail.addEventListener("scroll", sync, { passive: true });
+    const observer = new ResizeObserver(sync);
+    observer.observe(rail);
+    return () => {
+      rail.removeEventListener("scroll", sync);
+      observer.disconnect();
+    };
+  }, [sync]);
+
+  const step = useCallback((direction: 1 | -1) => {
+    const rail = railRef.current;
+    if (!rail) return;
+    const card = rail.querySelector("li");
+    const distance = (card?.offsetWidth ?? CARD_WIDTH) + GAP;
+    rail.scrollBy({ left: direction * distance, behavior: "smooth" });
+  }, []);
 
   return (
-    <Panel id="certifications" noBottomLine>
-      <PanelHeader>
-        <PanelTitle>
-          Certifications
-          <sup className="ml-0.5 text-[0.45em] font-normal text-muted-foreground">
-            ({certifications.length})
-          </sup>
-        </PanelTitle>
-      </PanelHeader>
+    <MotionConfig reducedMotion="user">
+      <Panel id="certifications" noBottomLine>
+        <PanelHeader className="flex items-center justify-between gap-4">
+          <PanelTitle>
+            Certifications
+            <sup className="ml-0.5 text-[0.45em] font-normal text-muted-foreground">
+              ({certifications.length})
+            </sup>
+          </PanelTitle>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2">
-        {certifications.map((cert) => (
-          <div key={cert.credentialId} className="border-b border-line p-4 sm:odd:border-r">
-            <CertificationCard cert={cert} animate={animate} />
+          {scrollable && (
+            <div className="flex items-center gap-1.5">
+              <RailButton direction="prev" disabled={atStart} onClick={() => step(-1)} />
+              <RailButton direction="next" disabled={atEnd} onClick={() => step(1)} />
+            </div>
+          )}
+        </PanelHeader>
+
+        <div className="border-b border-line">
+          <div className="relative">
+            <div
+              ref={railRef}
+              tabIndex={0}
+              role="region"
+              aria-label="Certifications — scroll sideways for more"
+              className="snap-x snap-mandatory scroll-px-4 [scrollbar-width:none] overflow-x-auto overscroll-x-contain outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset [&::-webkit-scrollbar]:hidden"
+            >
+              <motion.ul
+                variants={listVariants}
+                initial="hidden"
+                animate={inView ? "show" : "hidden"}
+                className="m-0 flex w-max list-none px-4 pt-6 pb-5"
+                style={{ gap: GAP }}
+              >
+                {certifications.map((cert) => (
+                  <CertificationCard key={cert.title} cert={cert} />
+                ))}
+              </motion.ul>
+            </div>
+
+            {/* Edge fades: only where there is more content to scroll to. */}
+            <motion.div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 left-0 z-20 w-10 bg-linear-to-r from-background to-transparent"
+              initial={false}
+              animate={{ opacity: scrollable && !atStart ? 1 : 0 }}
+              transition={{ duration: 0.25 }}
+            />
+            <motion.div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 right-0 z-20 w-10 bg-linear-to-l from-background to-transparent"
+              initial={false}
+              animate={{ opacity: scrollable && !atEnd ? 1 : 0 }}
+              transition={{ duration: 0.25 }}
+            />
           </div>
-        ))}
 
-        {/* Keeps the two-up grid whole when the count is odd. */}
-        {hasFiller && (
-          <div
-            aria-hidden="true"
-            className="diagonal-stripes hidden border-b border-line sm:block"
-          />
-        )}
-      </div>
-    </Panel>
+          {scrollable && (
+            <div aria-hidden="true" className="px-4 pb-4">
+              <div className="h-[3px] overflow-hidden rounded-full bg-muted">
+                <motion.div
+                  className="h-full rounded-full bg-foreground/35"
+                  style={{ width: thumbWidth, x: thumbX }}
+                />
+              </div>
+            </div>
+          )}
+        </div>
+      </Panel>
+    </MotionConfig>
   );
 }
