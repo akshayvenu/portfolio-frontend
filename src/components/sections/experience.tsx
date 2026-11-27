@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Icon } from "@/components/icons";
+import { LanyardTrigger } from "@/components/lanyard";
 import { IconTile, LinkPreview, Panel, PanelHeader, PanelTitle } from "@/components/ui";
 import { experience } from "@/content";
 import type { Role } from "@/types/content";
@@ -60,7 +61,9 @@ export function Experience() {
               {company.company.charAt(0)}
             </div>
             <h3 className="m-0 flex-1 text-lg font-medium">
-              {company.preview ? <LinkPreview preview={company.preview} /> : company.company}
+              <LanyardTrigger>
+                {company.preview ? <LinkPreview preview={company.preview} /> : company.company}
+              </LanyardTrigger>
             </h3>
             <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
               {company.location}

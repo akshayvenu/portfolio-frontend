@@ -1,8 +1,9 @@
 /**
  * The shape the Side Quest page renders from.
  *
- * Built server-side from the Strava API (or a seeded sample when no Strava
- * credentials are configured) — components never see raw Strava payloads.
+ * Built by the FastAPI backend (`portfolio-backend/app/services/strava`) from
+ * the Strava API, or a seeded sample when no Strava credentials are configured
+ * — components never see raw Strava payloads. Mirrors `app/schemas/running.py`.
  */
 
 export type StravaSource = "live" | "sample";
@@ -37,6 +38,17 @@ export interface RunActivity {
   /** Encoded Google polyline of the route, if GPS was on. */
   polyline: string | null;
   averageHeartrate: number | null;
+  maxHeartrate: number | null;
+  elapsedSeconds: number | null;
+  /** Metres per second. */
+  averageSpeed: number | null;
+  kudosCount: number;
+  achievementCount: number;
+  prCount: number;
+  /** Strava run workout type: 0 default, 1 race, 2 long run, 3 workout. */
+  workoutType: number | null;
+  /** Recording device, shown for Strava/Garmin attribution. */
+  deviceName: string | null;
 }
 
 export interface DayVolume {
@@ -75,9 +87,19 @@ export interface StreakSummary {
   thisWeekMeters: number;
 }
 
+export interface StravaAthlete {
+  id: number;
+  name: string;
+  profileUrl: string;
+  avatar: string | null;
+}
+
 export interface StravaSnapshot {
   source: StravaSource;
   syncedAt: string;
+  /** Null for sample data. */
+  athlete: StravaAthlete | null;
+  /** The athlete's Strava profile — from the API when live, else `running.stravaUrl`. */
   athleteUrl: string;
   totals: StravaTotals;
   personalBests: PersonalBest[];

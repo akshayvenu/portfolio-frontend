@@ -1,3 +1,4 @@
+import { LanyardOverlay } from "@/components/lanyard";
 import { ContentColumn, HashedBand, SiteFooter, SiteHeader } from "@/components/layout";
 import {
   Certifications,
@@ -41,6 +42,7 @@ export default function HomePage() {
     <>
       <PersonJsonLd />
       <SiteHeader />
+      <LanyardOverlay />
 
       <main>
         <ContentColumn>

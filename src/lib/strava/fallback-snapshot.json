@@ -1,0 +1,2039 @@
+{
+  "source": "sample",
+  "syncedAt": "2026-11-27T08:49:39.914681+00:00",
+  "athlete": null,
+  "totals": {
+    "ytdMeters": 895033.0,
+    "ytdRuns": 129,
+    "ytdMovingSeconds": 378865,
+    "ytdElevation": 6124.0,
+    "allMeters": 974957.0,
+    "allRuns": 144
+  },
+  "personalBests": [
+    {
+      "distance": "5k",
+      "label": "5K",
+      "meters": 5000.0,
+      "seconds": 2050,
+      "date": "2026-11-24T06:07:00Z",
+      "activityId": 16000000143,
+      "activityName": "Tempo Tuesday"
+    },
+    {
+      "distance": "10k",
+      "label": "10K",
+      "meters": 10000.0,
+      "seconds": 4360,
+      "date": "2026-11-22T06:48:00Z",
+      "activityId": 16000000142,
+      "activityName": "Sunday long run"
+    },
+    {
+      "distance": "half",
+      "label": "Half",
+      "meters": 21097.5,
+      "seconds": null,
+      "date": null,
+      "activityId": null,
+      "activityName": null
+    }
+  ],
+  "recent": [
+    {
+      "id": 16000000143,
+      "name": "Tempo Tuesday",
+      "sportType": "Run",
+      "startDate": "2026-11-24T06:07:00Z",
+      "meters": 6162.0,
+      "movingSeconds": 2345,
+      "elapsedSeconds": 2381,
+      "elevationGain": 60.0,
+      "polyline": "_c`|@c`|nMgFH{Ev@mDbCmBnDqAxCgCpAoFZwHb@{G|AcD~C_@`E^`ERzD?bEh@bE~C|CxGrAfIFpGMrDf@xBrBfC|CzDxB|Ej@bFKhFIfGTpHXlHe@rEmC~@cFw@yFoAsEMcDx@kC|@sCIwCyAmCiB}Bk@sCVgETyFgAmFkEwCcH_@mHl@kGv@mFT",
+      "averageHeartrate": 155.0,
+      "maxHeartrate": null,
+      "averageSpeed": 2.627,
+      "kudosCount": 0,
+      "achievementCount": 0,
+      "prCount": 0,
+      "workoutType": null,
+      "deviceName": null
+    },
+    {
+      "id": 16000000142,
+      "name": "Sunday long run",
+      "sportType": "Run",
+      "startDate": "2026-11-22T06:48:00Z",
+      "meters": 13427.0,
+      "movingSeconds": 5670,
+      "elapsedSeconds": 5738,
+      "elevationGain": 100.0,
+      "polyline": "_c`|@wz~nMiOpFuNrCiNdDqKlIaFnOeAdQkAfMuGrGqOfEoRzGuM~L}CfP`BnPjDvOvB`PnBfQ`GrO|NfIrT\\rToD|OuCbKfAzIhH~KtIbNnDdNq@nM}CrNoBbR_@nTuAjQmHxGsPsAaUmH}SoG_P}AeM^}LWgMkEwKmIcIkHqH{CoL_AyRqCaViJsQuP}F}RdBmQrG",
+      "averageHeartrate": 164.0,
+      "maxHeartrate": null,
+      "averageSpeed": 2.368,
+      "kudosCount": 0,
+      "achievementCount": 0,
+      "prCount": 0,
+      "workoutType": null,
+      "deviceName": null
+    },
+    {
+      "id": 16000000141,
+      "name": "Easy miles",
+      "sportType": "Run",
+      "startDate": "2026-11-21T06:38:00Z",
+      "meters": 6080.0,
+      "movingSeconds": 2443,
+      "elapsedSeconds": 2454,
+      "elevationGain": 44.0,
+      "polyline": "_c`|@ae|nMeFN}Er@sDdCoBbEiAxDoBpBsEj@iHd@cH|AyDhDo@tE^vE^pEBtE^|EfCzDbGjBbIN~GWdERbClBdCdDpDpCvE|@`FI`FUzFJfHZnHYfFgCxAqFm@wGyAuFg@_Ef@_D|@cD@iDsA_DqBkCaAwCFqETmGu@sGuD}DsG{@kHl@mGdAmFd@",
+      "averageHeartrate": 149.0,
+      "maxHeartrate": null,
+      "averageSpeed": 2.488,
+      "kudosCount": 0,
+      "achievementCount": 0,
+      "prCount": 0,
+      "workoutType": null,
+      "deviceName": null
+    },
+    {
+      "id": 16000000140,
+      "name": "Easy miles",
+      "sportType": "Run",
+      "startDate": "2026-11-19T18:16:00Z",
+      "meters": 5565.0,
+      "movingSeconds": 2280,
+      "elapsedSeconds": 2346,
+      "elevationGain": 31.0,
+      "polyline": "_c`|@ek|nMaDjC_Db@mE{AmGeCcHq@oFpBqCtFiAfH_AxGuAfGiAtGR`HrCfGlF~DzEfCvBrCP~ECjHr@hHhCvE~DzBhE~AjEfC`FhD|FhBxFaA|DaGfBmJt@oIhAgF`CoC|CeCxByDl@aFHiFj@cFzB_GxC{HtAcJ_A_IuEmEwG{AeGk@oEgAwDiB_EgAmE`@}DfC",
+      "averageHeartrate": 161.0,
+      "maxHeartrate": null,
+      "averageSpeed": 2.441,
+      "kudosCount": 0,
+      "achievementCount": 0,
+      "prCount": 0,
+      "workoutType": null,
+      "deviceName": null
+    },
+    {
+      "id": 16000000139,
+      "name": "Progression run",
+      "sportType": "Run",
+      "startDate": "2026-11-17T06:34:00Z",
+      "meters": 6584.0,
+      "movingSeconds": 2493,
+      "elapsedSeconds": 2580,
+      "elevationGain": 41.0,
+      "polyline": "_c`|@{e|nMgErCmDnBiEBuGqAyIiAiI\\gF~CqBlFu@zFeAjFyAfFc@rFbBlFtFxDnHvBjFzAjBfCVtEb@`GxBzElEfCpFdArFhA`GrBbHvBvHVhGgCbDsG~@}Hh@cG|AkD~C}BbDmCxAuDDeECaEbAiEtCsFnCgHPmHeDeFmHsBoI_@_HWmF{@aFeAmFKkFvA",
+      "averageHeartrate": 152.0,
+      "maxHeartrate": null,
+      "averageSpeed": 2.641,
+      "kudosCount": 0,
+      "achievementCount": 0,
+      "prCount": 0,
+      "workoutType": null,
+      "deviceName": null
+    },
+    {
+      "id": 16000000138,
+      "name": "Long and slow",
+      "sportType": "Run",
+      "startDate": "2026-11-15T06:15:00Z",
+      "meters": 13343.0,
+      "movingSeconds": 5692,
+      "elapsedSeconds": 5721,
+      "elevationGain": 127.0,
+      "polyline": "_c`|@wo~nMqQtC_OxHaMlHcMdF}LdFkItIgBrMbBrNpB|K}AlHsJlGuNtImJrLcAnM`EhLzGbKtFvKfFbMxIvKzOpE|SiAbS{G`O}GvKgBtK~AtMxCnNd@|LgC`KcFdLkEhPwCnSyDlPeIbF_NqDyOqLaNqLcKgGwI_CcJ}C_JuHuGkLiDuKeCcHwFcFwLmHePsM}LoQ}C",
+      "averageHeartrate": 157.0,
+      "maxHeartrate": null,
+      "averageSpeed": 2.344,
+      "kudosCount": 0,
+      "achievementCount": 0,
+      "prCount": 0,
+      "workoutType": null,
+      "deviceName": null
+    }
+  ],
+  "days": [
+    {
+      "date": "2025-12-01",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2025-12-02",
+      "meters": 4860.0,
+      "runs": 1
+    },
+    {
+      "date": "2025-12-03",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2025-12-04",
+      "meters": 4443.0,
+      "runs": 1
+    },
+    {
+      "date": "2025-12-05",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2025-12-06",
+      "meters": 3407.0,
+      "runs": 1
+    },
+    {
+      "date": "2025-12-07",
+      "meters": 7540.0,
+      "runs": 1
+    },
+    {
+      "date": "2025-12-08",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2025-12-09",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2025-12-10",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2025-12-11",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2025-12-12",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2025-12-13",
+      "meters": 4376.0,
+      "runs": 1
+    },
+    {
+      "date": "2025-12-14",
+      "meters": 7557.0,
+      "runs": 1
+    },
+    {
+      "date": "2025-12-15",
+      "meters": 3634.0,
+      "runs": 1
+    },
+    {
+      "date": "2025-12-16",
+      "meters": 4489.0,
+      "runs": 1
+    },
+    {
+      "date": "2025-12-17",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2025-12-18",
+      "meters": 3997.0,
+      "runs": 1
+    },
+    {
+      "date": "2025-12-19",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2025-12-20",
+      "meters": 4398.0,
+      "runs": 1
+    },
+    {
+      "date": "2025-12-21",
+      "meters": 7904.0,
+      "runs": 1
+    },
+    {
+      "date": "2025-12-22",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2025-12-23",
+      "meters": 4648.0,
+      "runs": 1
+    },
+    {
+      "date": "2025-12-24",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2025-12-25",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2025-12-26",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2025-12-27",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2025-12-28",
+      "meters": 6720.0,
+      "runs": 1
+    },
+    {
+      "date": "2025-12-29",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2025-12-30",
+      "meters": 4848.0,
+      "runs": 1
+    },
+    {
+      "date": "2025-12-31",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-01-01",
+      "meters": 3323.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-01-02",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-01-03",
+      "meters": 3700.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-01-04",
+      "meters": 7474.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-01-05",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-01-06",
+      "meters": 4607.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-01-07",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-01-08",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-01-09",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-01-10",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-01-11",
+      "meters": 8161.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-01-12",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-01-13",
+      "meters": 4926.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-01-14",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-01-15",
+      "meters": 4416.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-01-16",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-01-17",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-01-18",
+      "meters": 7921.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-01-19",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-01-20",
+      "meters": 4974.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-01-21",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-01-22",
+      "meters": 3820.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-01-23",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-01-24",
+      "meters": 4838.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-01-25",
+      "meters": 8088.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-01-26",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-01-27",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-01-28",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-01-29",
+      "meters": 3521.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-01-30",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-01-31",
+      "meters": 4850.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-02-01",
+      "meters": 7305.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-02-02",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-02-03",
+      "meters": 4939.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-02-04",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-02-05",
+      "meters": 4718.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-02-06",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-02-07",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-02-08",
+      "meters": 7793.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-02-09",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-02-10",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-02-11",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-02-12",
+      "meters": 4314.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-02-13",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-02-14",
+      "meters": 3857.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-02-15",
+      "meters": 7841.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-02-16",
+      "meters": 3554.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-02-17",
+      "meters": 4608.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-02-18",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-02-19",
+      "meters": 3674.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-02-20",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-02-21",
+      "meters": 3988.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-02-22",
+      "meters": 8222.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-02-23",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-02-24",
+      "meters": 5345.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-02-25",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-02-26",
+      "meters": 4191.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-02-27",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-02-28",
+      "meters": 4828.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-03-01",
+      "meters": 7916.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-03-02",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-03",
+      "meters": 4716.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-03-04",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-05",
+      "meters": 4616.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-03-06",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-07",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-08",
+      "meters": 8227.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-03-09",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-10",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-11",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-12",
+      "meters": 4467.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-03-13",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-14",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-15",
+      "meters": 8915.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-03-16",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-17",
+      "meters": 5504.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-03-18",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-19",
+      "meters": 5079.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-03-20",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-21",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-22",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-23",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-24",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-25",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-26",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-27",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-28",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-29",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-30",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-03-31",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-01",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-02",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-03",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-04",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-05",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-06",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-07",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-08",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-09",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-10",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-11",
+      "meters": 4551.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-04-12",
+      "meters": 9574.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-04-13",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-14",
+      "meters": 5679.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-04-15",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-16",
+      "meters": 5220.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-04-17",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-18",
+      "meters": 5074.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-04-19",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-20",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-21",
+      "meters": 5223.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-04-22",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-23",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-24",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-25",
+      "meters": 4892.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-04-26",
+      "meters": 9336.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-04-27",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-28",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-29",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-04-30",
+      "meters": 4838.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-05-01",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-05-02",
+      "meters": 4910.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-05-03",
+      "meters": 9766.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-05-04",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-05-05",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-05-06",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-05-07",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-05-08",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-05-09",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-05-10",
+      "meters": 10578.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-05-11",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-05-12",
+      "meters": 4938.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-05-13",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-05-14",
+      "meters": 4876.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-05-15",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-05-16",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-05-17",
+      "meters": 10258.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-05-18",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-05-19",
+      "meters": 5906.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-05-20",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-05-21",
+      "meters": 4675.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-05-22",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-05-23",
+      "meters": 5221.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-05-24",
+      "meters": 10037.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-05-25",
+      "meters": 5416.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-05-26",
+      "meters": 5296.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-05-27",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-05-28",
+      "meters": 4864.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-05-29",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-05-30",
+      "meters": 4482.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-05-31",
+      "meters": 9810.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-06-01",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-02",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-03",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-04",
+      "meters": 5555.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-06-05",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-06",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-07",
+      "meters": 11078.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-06-08",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-09",
+      "meters": 5509.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-06-10",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-11",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-12",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-13",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-14",
+      "meters": 10604.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-06-15",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-16",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-17",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-18",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-19",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-20",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-21",
+      "meters": 10718.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-06-22",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-23",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-24",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-25",
+      "meters": 5236.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-06-26",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-27",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-28",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-29",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-06-30",
+      "meters": 5810.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-07-01",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-07-02",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-07-03",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-07-04",
+      "meters": 5212.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-07-05",
+      "meters": 10584.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-07-06",
+      "meters": 4939.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-07-07",
+      "meters": 5511.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-07-08",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-07-09",
+      "meters": 5846.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-07-10",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-07-11",
+      "meters": 5170.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-07-12",
+      "meters": 11254.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-07-13",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-07-14",
+      "meters": 5538.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-07-15",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-07-16",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-07-17",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-07-18",
+      "meters": 4983.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-07-19",
+      "meters": 11273.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-07-20",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-07-21",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-07-22",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-07-23",
+      "meters": 4703.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-07-24",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-07-25",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-07-26",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-07-27",
+      "meters": 5872.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-07-28",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-07-29",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-07-30",
+      "meters": 5746.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-07-31",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-01",
+      "meters": 6155.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-08-02",
+      "meters": 11684.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-08-03",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-04",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-05",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-06",
+      "meters": 5613.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-08-07",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-08",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-09",
+      "meters": 11780.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-08-10",
+      "meters": 6212.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-08-11",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-12",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-13",
+      "meters": 5396.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-08-14",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-15",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-16",
+      "meters": 11276.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-08-17",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-18",
+      "meters": 6386.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-08-19",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-20",
+      "meters": 6076.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-08-21",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-22",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-23",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-24",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-25",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-26",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-27",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-28",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-08-29",
+      "meters": 6075.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-08-30",
+      "meters": 12586.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-08-31",
+      "meters": 6017.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-09-01",
+      "meters": 5627.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-09-02",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-09-03",
+      "meters": 5569.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-09-04",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-09-05",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-09-06",
+      "meters": 12206.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-09-07",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-09-08",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-09-09",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-09-10",
+      "meters": 5895.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-09-11",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-09-12",
+      "meters": 5817.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-09-13",
+      "meters": 12213.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-09-14",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-09-15",
+      "meters": 6014.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-09-16",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-09-17",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-09-18",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-09-19",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-09-20",
+      "meters": 12976.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-09-21",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-09-22",
+      "meters": 6569.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-09-23",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-09-24",
+      "meters": 6542.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-09-25",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-09-26",
+      "meters": 5783.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-09-27",
+      "meters": 12315.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-09-28",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-09-29",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-09-30",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-10-01",
+      "meters": 5432.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-10-02",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-10-03",
+      "meters": 5583.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-10-04",
+      "meters": 13236.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-10-05",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-10-06",
+      "meters": 6109.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-10-07",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-10-08",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-10-09",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-10-10",
+      "meters": 6114.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-10-11",
+      "meters": 13467.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-10-12",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-10-13",
+      "meters": 6483.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-10-14",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-10-15",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-10-16",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-10-17",
+      "meters": 5658.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-10-18",
+      "meters": 13429.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-10-19",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-10-20",
+      "meters": 6534.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-10-21",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-10-22",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-10-23",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-10-24",
+      "meters": 6024.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-10-25",
+      "meters": 13114.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-10-26",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-10-27",
+      "meters": 6560.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-10-28",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-10-29",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-10-30",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-10-31",
+      "meters": 6268.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-11-01",
+      "meters": 12581.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-11-02",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-11-03",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-11-04",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-11-05",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-11-06",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-11-07",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-11-08",
+      "meters": 12985.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-11-09",
+      "meters": 5911.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-11-10",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-11-11",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-11-12",
+      "meters": 5805.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-11-13",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-11-14",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-11-15",
+      "meters": 13343.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-11-16",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-11-17",
+      "meters": 6584.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-11-18",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-11-19",
+      "meters": 5565.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-11-20",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-11-21",
+      "meters": 6080.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-11-22",
+      "meters": 13427.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-11-23",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-11-24",
+      "meters": 6162.0,
+      "runs": 1
+    },
+    {
+      "date": "2026-11-25",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-11-26",
+      "meters": 0.0,
+      "runs": 0
+    },
+    {
+      "date": "2026-11-27",
+      "meters": 0.0,
+      "runs": 0
+    }
+  ],
+  "weeks": [
+    {
+      "weekStart": "2026-09-07",
+      "meters": 23925.0,
+      "runs": 3
+    },
+    {
+      "weekStart": "2026-09-14",
+      "meters": 18990.0,
+      "runs": 2
+    },
+    {
+      "weekStart": "2026-09-21",
+      "meters": 31209.0,
+      "runs": 4
+    },
+    {
+      "weekStart": "2026-09-28",
+      "meters": 24251.0,
+      "runs": 3
+    },
+    {
+      "weekStart": "2026-10-05",
+      "meters": 25690.0,
+      "runs": 3
+    },
+    {
+      "weekStart": "2026-10-12",
+      "meters": 25570.0,
+      "runs": 3
+    },
+    {
+      "weekStart": "2026-10-19",
+      "meters": 25672.0,
+      "runs": 3
+    },
+    {
+      "weekStart": "2026-10-26",
+      "meters": 25409.0,
+      "runs": 3
+    },
+    {
+      "weekStart": "2026-11-02",
+      "meters": 12985.0,
+      "runs": 1
+    },
+    {
+      "weekStart": "2026-11-09",
+      "meters": 25059.0,
+      "runs": 3
+    },
+    {
+      "weekStart": "2026-11-16",
+      "meters": 31656.0,
+      "runs": 4
+    },
+    {
+      "weekStart": "2026-11-23",
+      "meters": 6162.0,
+      "runs": 1
+    }
+  ],
+  "streak": {
+    "currentWeeks": 34,
+    "longestWeeks": 34,
+    "currentDays": 0,
+    "thisWeekRuns": 1,
+    "thisWeekMeters": 6162.0
+  }
+}

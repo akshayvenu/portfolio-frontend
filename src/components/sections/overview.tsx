@@ -1,4 +1,5 @@
 import { Icon } from "@/components/icons";
+import { LanyardTrigger } from "@/components/lanyard";
 import { IconTile, LinkPreview, Panel, PanelSrTitle } from "@/components/ui";
 import { profile } from "@/content";
 import { cn } from "@/lib/utils";
@@ -13,7 +14,9 @@ function OverviewRow({ item }: { item: OverviewItem }) {
     ) : item.preview ? (
       <>
         {item.label}
-        <LinkPreview preview={item.preview} />
+        <LanyardTrigger>
+          <LinkPreview preview={item.preview} />
+        </LanyardTrigger>
       </>
     ) : (
       item.label
