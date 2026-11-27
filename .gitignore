@@ -37,3 +37,6 @@ yarn-error.log*
 .vscode/*
 !.vscode/extensions.json
 !.vscode/settings.json
+
+# This project uses Bun (bun.lock); an npm lockfile makes Vercel switch to npm.
+package-lock.json
